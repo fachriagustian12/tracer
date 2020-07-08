@@ -159,4 +159,10 @@ class Users extends CI_Controller {
 			redirect('backend/users/user/'.$level);
         }
     }
+    public function alumni()
+    {
+        $this->load->model('loker_model');
+        $data['loker']=$this->loker_model->getAll()->result();
+        $this->load->view('frontend/alumni/index',$data);
+    }
 }

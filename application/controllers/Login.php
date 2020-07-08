@@ -41,11 +41,14 @@ class Login extends CI_Controller {
 					'jenis_kelamin'=> $user->jenis_kelamin,
 					'tgl_lahir' => $user->tgl_lahir,
 					'telp' => $user->telp,
+					'alamat' => $user->alamat,
 					'email' => $user->email,
 					'tahun_lulus' => $user->tahun_lulus,
 					'angkatan' => $user->angkatan,
 					'pekerjaan' => $user->pekerjaan,
+					'mulai_kerja' => $user->mulai_kerja,
 					'bidang_pekerjaan' => $user->bidang_pekerjaan,
+					'jabatan' => $user->jabatan,
 					'foto' => $user->foto,
 					'username' => $user->username,
 					'status' => $user->status
@@ -61,7 +64,7 @@ class Login extends CI_Controller {
 				redirect(base_url('admin'));
 			}else if($this->session->userdata('id_user_grup')==3){
 				$this->session->set_flashdata('login','Selamat Datang !');
-				echo "mahasiswa";
+				redirect('backend/users/alumni');
 			}
 		}else{
 			$this->session->set_flashdata('login','Password atau Username anda tidak cocok !');
