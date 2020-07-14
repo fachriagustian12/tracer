@@ -20,6 +20,9 @@ class Users extends CI_Controller {
 	 */
     public function __construct(){
         parent::__construct();
+        if ($this->session->userdata('isLogin')!="1") {
+			redirect('login');
+		}
         $this->load->model('users_model');
     }
 	public function user($level)
@@ -127,16 +130,26 @@ class Users extends CI_Controller {
         if($this->input->post('submit'))
         {
             if (md5($this->input->post('new_password'))!=md5($this->input->post('confirm_password'))) {
-                $this->session->set_flashdata('msg','password tidak sesuai');
-                redirect('backend/users/ubahpassword');
+                if ($this->session->userdata('id_user_grup')==2) {
+                    $this->session->set_flashdata('msg','password tidak sesuai');
+                    redirect('backend/users/ubahpassword');
+                }else if($this->session->userdata('id_user_grup')==3){
+                    $this->session->set_flashdata('gantiPass','password tidak sesuai');
+                    redirect('alumni');
+                }
             }else{
                 $where = $this->session->userdata('id');
                 $data = $this->users_model->ubahpassword($where);
                 if($data==true){
                     redirect('login/logout');
                 }else {
-                    $this->session->set_flashdata('msg','ganti password gagal atau password lama salah!');
-                    redirect('backend/users/ubahpassword');
+                    if ($this->session->userdata('id_user_grup')==2) {
+                        $this->session->set_flashdata('msg','ganti password gagal atau password lama salah!');
+                        redirect('backend/users/ubahpassword');
+                    }else if($this->session->userdata('id_user_grup')==3){
+                        $this->session->set_flashdata('gantiPass','ganti password gagal atau password lama salah!');
+                        redirect('alumni');
+                    }
                 }
             }
         }
@@ -162,7 +175,9 @@ class Users extends CI_Controller {
     public function alumni()
     {
         $this->load->model('loker_model');
+        $this->load->model('survey_model');
         $data['loker']=$this->loker_model->getAll()->result();
+        $data['survey']=$this->survey_model->getAll()->result();
         $this->load->view('frontend/alumni/index',$data);
     }
 }

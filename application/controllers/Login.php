@@ -35,6 +35,7 @@ class Login extends CI_Controller {
 			foreach($cek_user->result() as $user){
 				$sess = array(
 					'isLogin' => "1",
+					'id' => $user->id,
 					'id_user_grup' => $user->id_user_grup,
 					'nama_depan'=> $user->nama_depan,
 					'nama_belakang'=> $user->nama_belakang,
@@ -64,7 +65,7 @@ class Login extends CI_Controller {
 				redirect(base_url('admin'));
 			}else if($this->session->userdata('id_user_grup')==3){
 				$this->session->set_flashdata('login','Selamat Datang !');
-				redirect('backend/users/alumni');
+				redirect('alumni');
 			}
 		}else{
 			$this->session->set_flashdata('login','Password atau Username anda tidak cocok !');

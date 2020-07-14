@@ -153,7 +153,7 @@ class Users_model extends CI_Model {
 
     public function ubahpassword($id)
     {
-        $cek = $this->db->get_where('user',$id);
+        $cek = $this->db->get_where('user',['id'=>$id]);
         if ($cek->num_rows()>0) {
             foreach($cek->result() as $user)
             {
@@ -161,6 +161,7 @@ class Users_model extends CI_Model {
             }
             if (md5($this->input->post('old_password'))==$password) {
                 $password_baru=array('password'=>md5($this->input->post('new_password')));
+                $this->db->where('id',$id);
                 $query = $this->db->update('user',$password_baru);
                 if ($query ) {
                     return true;

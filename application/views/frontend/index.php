@@ -227,7 +227,6 @@
 
   <!-- Template Main JS File -->
   <script src="<?= base_url('assets/frontend/lp')?>/js/main.js"></script>
-
 </body>
 
 </html>

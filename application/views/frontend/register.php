@@ -144,7 +144,7 @@
         $(function () {
             $("#datepicker").datepicker({ 
                     autoclose: true, 
-                    format: 'dd mm yyyy'
+                    format: 'dd  yyyy'
             });
             $("#datepicker1").datepicker({ 
                     autoclose: true, 
