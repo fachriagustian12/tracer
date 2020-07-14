@@ -62,7 +62,7 @@
             </li>
             <?php if($this->session->userdata('id_user_grup')==2): ?>
             <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="<?= base_url('backend/survey') ?>" class="nav-link">
                     <i class="nav-icon fas fa-search-plus"></i>
                     <p>
                     Survei

@@ -8,9 +8,22 @@ class Loker_model extends CI_Model {
         return $this->db->get('loker');
     }
 
-    public function get_sub_pekerjaan($id)
+    public function tambah($id,$foto)
     {
-        $this->db->where('id_pekerjaan',$id);
-        return $this->db->get('sub_pekerjaan');
+        $data = array(
+            'id_user' => $id,
+            'judul' => $this->input->post('judul'),
+            'deskripsi' => $this->input->post('deskripsi'),
+            'tgl_buat'=> $this->input->post('tgl_buat'),
+            'tgl_akhir'=> $this->input->post('tgl_akhir'),
+            'foto'=> $foto,
+            'status'=>'unpublish',
+        );
+        $query = $this->db->insert('loker',$data);
+        if ($query) {
+            return TRUE;
+        }else{
+            return FALSE;
+        }
     }
 }

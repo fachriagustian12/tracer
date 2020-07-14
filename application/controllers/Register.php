@@ -45,10 +45,10 @@ class Register extends CI_Controller {
 			$this->load->model('users_model');
             $data=$this->users_model->daftar($foto);
             if($data==true){    
-				$this->session->set_flashdata('msg','Pendaftaran berhasil , silahkan tunggu 1 x 24 jam untuk aktivasi!');
+				$this->session->set_flashdata('login','Pendaftaran berhasil , silahkan tunggu 1 x 24 jam untuk aktivasi!');
 				redirect('login');
 			}else {
-				$this->session->set_flashdata('msg','Pendaftaran gagal, silahkan coba lagi!');
+				$this->session->set_flashdata('login','Pendaftaran gagal, silahkan coba lagi!');
 				redirect('login');
 			}
         }

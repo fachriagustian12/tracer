@@ -1104,3 +1104,7 @@ section {
 		padding-right: 20px 15px;
 	}
 }
+
+table .table.survey {
+	border-top: 0px !important;
+}
