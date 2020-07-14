@@ -245,7 +245,7 @@
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
             <div class="icon"><i class="icofont-tasks-alt"></i></div>
             <h4 class="title"><a><?= $survey->nama_survei ?></a></h4>
-            <p class="description text-justify"><?= $survey->deskripsi ?></p>
+            <p class="description text-justify"><?= substr($survey->deskripsi,0,75) ?> ...</p>
             <a href="<?= base_url('detailSurvey/'.$survey->id) ?>" class="btn btn-primary btn-sm float-right">Mulai Survey  <i class="bx bx-right-arrow p-t-3"></i></a>
           </div>
           <?php endforeach ?>

@@ -96,9 +96,11 @@ class Survey extends CI_Controller {
 	public function survei($id)
 	{
 		$this->load->model('survey_pertanyaan_model');
+		$this->load->model('jawaban_pertanyaan_model');
 		$data['title'] = $id;
 		$data['survey'] = $this->survey_model->getById($id)->row();
 		$data['surveyPertanyaan'] = $this->survey_pertanyaan_model->getByIdPertanyaanSatu($id,1)->row();
+		$data['cekJawabanUser'] = $this->jawaban_pertanyaan_model->getById($id)->num_rows();
 		$this->load->view('frontend/alumni/survei',$data);
 	}
 
@@ -122,7 +124,7 @@ class Survey extends CI_Controller {
 		}else if($this->input->post('save')){
 			$this->load->model('jawaban_pertanyaan_model');
 			$input = $this->jawaban_pertanyaan_model->tambah($idSurvei,$idPertanyaan);
-			$this->session->set_flashdata('hasilSurvey','Pengisian Survey Berhasil ! Terimakasih ');
+			$this->session->set_flashdata('hasilSurvey','Pengisian Survey Berhasil ! Terimakasih. Silahkan klik Home untuk Kembali atau Logout untuk keluar dari aplikasi. ');
 			redirect('detailSurvey/'.$idSurvei);
 		}
 		$this->load->model('survey_pertanyaan_model');

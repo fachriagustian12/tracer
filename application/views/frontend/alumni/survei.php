@@ -71,6 +71,19 @@
           <h2>Survey</h2>
         </div>
 
+        <?php 
+          if ($this->session->flashdata('hasilSurvey')) {
+        ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <?= $this->session->flashdata('hasilSurvey') ?>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <?php
+          }
+        ?>
+
         <div class="row" data-aos="fade-in" style="font-size:11px;">
             <div class="col-lg-12 d-flex align-items-stretch">
                 <div class="info">
@@ -78,7 +91,17 @@
                     <i class="icofont-tasks-alt"></i>
                     <h4><?= $survey->nama_survei ?></h4>
                     <p><?= $survey->deskripsi ?></p>
+                    <?php 
+                      if ($cekJawabanUser > 0) {
+                    ?>
+                      <span class="float-right"><a class="btn btn-secondary btn-sm disabled">Anda Sudah Mengerjakan Survey ini <span class="anu bx bx-wink-smile pt-1"></span></a></span>
+                    <?php
+                      }else{
+                    ?>
                     <span class="float-right"><a href="<?= base_url('lakukanSurvey/'.$title.'/'.$surveyPertanyaan->id) ?>" class="btn btn-primary btn-sm">Mulai Kerjakan <span class="anu bx bx-right-arrow pt-1"></span></a></span>
+                    <?php
+                      }
+                    ?>
                   </div>
                 </div>
             </div>

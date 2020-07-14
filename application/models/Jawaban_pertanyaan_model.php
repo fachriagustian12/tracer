@@ -10,8 +10,9 @@ class Jawaban_pertanyaan_model extends CI_Model {
 
     public function getById($id)
     {
-        $this->db->where('id',$id);
-        return $this->db->get('survei');
+        $this->db->where('id_survei',$id);
+        $this->db->where('id_user',$this->session->userdata('id'));
+        return $this->db->get('jawaban_pertanyaan');
     }
 
     public function tambah($idSurvei,$idPertanyaan)
