@@ -28,6 +28,19 @@ class Survey_pertanyaan_model extends CI_Model {
         return $this->db->get('survei_pertanyaan');
     }
 
+    public function getByIdPertanyaanLimit($id,$idPertanyaan)
+    {
+        $this->db->where('id_survei',$id);
+        $this->db->where('id',$idPertanyaan);
+        return $this->db->get('survei_pertanyaan',1);
+    }
+
+    public function getByIdPertanyaanLimitStart($id,$idPertanyaan)
+    {
+        $query = $this->db->query("SELECT * FROM survei_pertanyaan WHERE id_survei=$id AND id > $idPertanyaan ORDER BY id LIMIT 1 ");
+        return $query;
+    }
+
     public function getById($id)
     {
         $this->db->where('id_survei',$id);

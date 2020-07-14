@@ -71,15 +71,42 @@
           <h2>Survey</h2>
         </div>
 
-        <div class="row" data-aos="fade-in" style="font-size:11px;">
+        <div class="row" data-aos="fade-in">
             <div class="col-lg-12 d-flex align-items-stretch">
                 <div class="info">
-                  <div class="address">
-                    <i class="icofont-tasks-alt"></i>
-                    <h4><?= $survey->nama_survei ?></h4>
-                    <p><?= $survey->deskripsi ?></p>
-                    <span class="float-right"><a href="<?= base_url('lakukanSurvey/'.$title.'/'.$surveyPertanyaan->id) ?>" class="btn btn-primary btn-sm">Mulai Kerjakan <span class="anu bx bx-right-arrow pt-1"></span></a></span>
-                  </div>
+                    <form action="<?= base_url('lakukanSurvey/'.$idSurvei.'/'.$idPertanyaan) ?>" method="post">
+                        <table class="table table-borderless">
+                            <tr>
+                                <td><?= $surveyPertanyaanLimit->pertanyaan ?></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <?php foreach($surveyJawaban as $jawaban): ?>
+                                    <div class="form-check ml-2 mb-2">
+                                        <input class="form-check-input" type="radio" name="jawaban" value="<?= $jawaban->id ?>">
+                                        <label class="form-check-label">
+                                        <?= $jawaban->jawaban; ?>
+                                        </label>
+                                    </div>
+                                    <?php endforeach ?>
+                                </td>
+                            </tr>
+                                
+                        </table>
+                        <?php 
+                            if ($surveyPertanyaanLimitStart->num_rows() == 0) {
+                        ?>
+                                <input type="submit" class="btn btn-primary btn-sm float-right" name="save" value="Save">
+                        <?php     
+                            }else{
+
+                        ?>
+                                <input type="submit" class="btn btn-primary btn-sm float-right" name="submit" value="Next">
+                        <?php
+                            }
+                        
+                        ?>
+                    </form>
                 </div>
             </div>
         </div>

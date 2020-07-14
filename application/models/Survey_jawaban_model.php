@@ -29,9 +29,10 @@ class Survey_jawaban_model extends CI_Model {
         return $this->db->get('survei_jawaban');
     }
 
-    public function getByIdJawaban($id)
+    public function getByIdJawaban($idSurvey,$idPertanyaan)
     {
-        $this->db->where('id_survey',$id);
+        $this->db->where('id_survey',$idSurvey);
+        $this->db->where('id_pertanyaan',$idPertanyaan);
         return $this->db->get('survei_jawaban');
     }
 

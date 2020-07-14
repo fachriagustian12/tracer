@@ -96,12 +96,42 @@ class Survey extends CI_Controller {
 	public function survei($id)
 	{
 		$this->load->model('survey_pertanyaan_model');
-		$this->load->model('survey_jawaban_model');
 		$data['title'] = $id;
 		$data['survey'] = $this->survey_model->getById($id)->row();
-		$data['surveyPertanyaan'] = $this->survey_pertanyaan_model->getById($id)->result();
-		$data['surveyJawaban'] = $this->survey_jawaban_model->getByIdJawaban($id)->result();
+		$data['surveyPertanyaan'] = $this->survey_pertanyaan_model->getByIdPertanyaanLimit($id,1)->row();
 		$this->load->view('frontend/alumni/survei',$data);
 	}
 
+	public function lakukansurvei()
+	{
+		$idSurvei = $this->uri->segment(2);
+		$idPertanyaan = $this->uri->segment(3);
+		
+		if ($this->input->post('submit')) {
+			$this->load->model('jawaban_pertanyaan_model');
+			$this->load->model('survey_pertanyaan_model');
+			$input = $this->jawaban_pertanyaan_model->tambah($idSurvei,$idPertanyaan);
+			$idBaru;
+			$pertanyaan = $this->survey_pertanyaan_model->getById($idSurvei);
+			foreach($pertanyaan->result() as $pertanyaan){
+				if ($pertanyaan->id > $idPertanyaan) {
+					$idPertanyaan = $pertanyaan->id;
+					break;
+				}
+			}
+		}else if($this->input->post('save')){
+			$this->load->model('jawaban_pertanyaan_model');
+			$input = $this->jawaban_pertanyaan_model->tambah($idSurvei,$idPertanyaan);
+			$this->session->set_flashdata('hasilSurvey','Pengisian Survey Berhasil ! Terimakasih ');
+			redirect('detailSurvey/'.$idSurvei);
+		}
+		$this->load->model('survey_pertanyaan_model');
+		$this->load->model('survey_jawaban_model');
+		$data['idSurvei'] = $idSurvei;
+		$data['idPertanyaan'] = $idPertanyaan;
+		$data['surveyPertanyaanLimitStart'] = $this->survey_pertanyaan_model->getByIdPertanyaanLimitStart($idSurvei,$idPertanyaan);
+		$data['surveyPertanyaanLimit'] = $this->survey_pertanyaan_model->getByIdPertanyaanLimit($idSurvei,$idPertanyaan)->row();
+		$data['surveyJawaban'] = $this->survey_jawaban_model->getByIdJawaban($idSurvei,$idPertanyaan)->result();
+		$this->load->view('frontend/alumni/lakukanSurvei',$data);
+	}
 }
