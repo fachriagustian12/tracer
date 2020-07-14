@@ -6,12 +6,12 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>iPortfolio Bootstrap Template - Index</title>
+  <title>Tracer Study IF UNLA</title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="<?= base_url('assets/frontend/alumni')?>/img/favicon.png" rel="icon">
+  <link href="<?= base_url('assets/frontend')?>/img/logo.png" rel="icon">
   <link href="<?= base_url('assets/frontend/alumni')?>/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -53,7 +53,7 @@
 
       <nav class="nav-menu">
         <ul>
-          <li class="active"><a href="index.html"><i class="bx bx-home"></i> <span>Home</span></a></li>
+          <li class="active"><a href="#home"><i class="bx bx-home"></i> <span>Home</span></a></li>
           <li><a href="#about"><i class="bx bx-user"></i> <span>About</span></a></li>
           <li><a href="#portfolio"><i class="bx bx-book-content"></i>Loker</a></li>
           <li><a href="#services"><i class="bx bx-server"></i> Survei</a></li>
@@ -82,7 +82,7 @@
 
         <div class="section-title">
           <h2>About</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <!-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> -->
         </div>
 
         <div class="row">
@@ -91,10 +91,10 @@
           </div>
           <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
             <h3><?= $this->session->userdata('jabatan')?></h3>
-            <p class="font-italic">
+            <!-- <p class="font-italic">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
               magna aliqua.
-            </p>
+            </p> -->
             <div class="row">
               <div class="col-lg-6">
                 <ul>
@@ -115,10 +115,10 @@
                 </ul>
               </div>
             </div>
-            <p>
+            <!-- <p>
               Officiis eligendi itaque labore et dolorum mollitia officiis optio vero. Quisquam sunt adipisci omnis et ut. Nulla accusantium dolor incidunt officia tempore. Et eius omnis.
               Cupiditate ut dicta maxime officiis quidem quia. Sed et consectetur qui quia repellendus itaque neque. Aliquid amet quidem ut quaerat cupiditate. Ab et eum qui repellendus omnis culpa magni laudantium dolores.
-            </p>
+            </p> -->
           </div>
         </div>
 
@@ -152,7 +152,7 @@
             <div class="portfolio-wrap">
               <img src="<?= base_url('assets/loker/'.$loker->foto)?>" class="img-fluid" alt="">
               <div class="portfolio-links">
-                <a href="<?= base_url('assets/frontend/alumni')?>/img/portfolio/portfolio-1.jpg" data-gall="portfolioGallery" class="venobox" title="App 1"><i class="bx bx-plus"></i></a>
+                <a href="<?= base_url('assets/loker/'.$loker->foto)?>" data-gall="portfolioGallery" class="venobox" title="App 1"><i class="bx bx-plus"></i></a>
                 <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
               </div>
             </div>
@@ -168,7 +168,7 @@
 
         <div class="section-title">
           <h2>Tambah Lowongan Kerja</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <p>Silakan tambahkan lowongan pekerjaan jika anda punya lowongan pekerjaan</p>
         </div>
 
         <div class="row" data-aos="fade-in">

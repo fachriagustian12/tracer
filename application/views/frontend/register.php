@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Register</title>
+    <title>Tracer Study IF UNLA</title>
     <!-- Font Icon -->
     <link rel="stylesheet" href="<?= base_url('assets/login/fonts/material-icon/css/material-design-iconic-font.min.css') ?>">
 
@@ -128,7 +128,7 @@
                         
                         <div class="signup-image">
                             <figure><img src="<?= base_url('assets/login/images/signup-image.jpg" alt="sing up image')?>"></figure>
-                            <a href="<?= base_url('login/login')?>" class="signup-image-link">Sudah punya akun ? silakan login!</a>
+                            <a href="<?= base_url('login')?>" class="signup-image-link">Sudah punya akun ? silakan login!</a>
                         </div>
                     </form>
                     </div>

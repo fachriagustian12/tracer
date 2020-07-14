@@ -1,17 +1,15 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
   <title>Tracer Study</title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="<?= base_url('assets/frontend/lp')?>/img/favicon.png" rel="icon">
+  <link href="<?= base_url('assets/frontend')?>/img/logo.png" rel="icon">
   <link href="<?= base_url('assets/frontend/lp')?>/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -36,9 +34,7 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 </head>
-
 <body>
-
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top ">
     <div class="container-fluid">
@@ -49,7 +45,6 @@
           <h1 class="logo mr-auto"><a href="index.html">TRACER STUDY</a></h1>
           <!-- Uncomment below if you prefer to use an image logo -->
           <!-- <a href="index.html" class="logo mr-auto"><img src="<?= base_url('assets/frontend/lp')?>/img/logo.png" alt="" class="img-fluid"></a>-->
-
           <nav class="nav-menu d-none d-lg-block">
             <ul>
               <li class="active"><a href="<?= base_url() ?>">Home</a></li>
@@ -77,7 +72,7 @@
             <div class="container">
               <h2 class="animated fadeInDown">Welcome to <span>Tracer Study</span></h2>
               <p class="animated fadeInUp">Silakan login dan register jika belum mendaftar</p>
-              <a href="#about" class="btn-get-started animated fadeInUp scrollto">Log in</a>
+              <a href="<?= base_url('login')?>" class="btn-get-started animated fadeInUp scrollto">Log in</a>
             </div>
           </div>
         </div>
@@ -173,7 +168,7 @@
 
           <div class="col-lg-3 col-6 text-center">
             <span data-toggle="counter-up">232</span>
-            <p>Clients</p>
+            <p>Jumlah alumni terdaftar</p>
           </div>
 
           <div class="col-lg-3 col-6 text-center">
@@ -204,14 +199,14 @@
   <footer id="footer">
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span>Hidayah</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>Tracer Study IF UNLA</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/hidayah-free-simple-html-template-for-corporate/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        Designed by <a href="#">Bagja Septian M</a>
       </div>
     </div>
   </footer><!-- End Footer -->
