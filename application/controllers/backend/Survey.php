@@ -98,7 +98,7 @@ class Survey extends CI_Controller {
 		$this->load->model('survey_pertanyaan_model');
 		$data['title'] = $id;
 		$data['survey'] = $this->survey_model->getById($id)->row();
-		$data['surveyPertanyaan'] = $this->survey_pertanyaan_model->getByIdPertanyaanLimit($id,1)->row();
+		$data['surveyPertanyaan'] = $this->survey_pertanyaan_model->getByIdPertanyaanSatu($id,1)->row();
 		$this->load->view('frontend/alumni/survei',$data);
 	}
 

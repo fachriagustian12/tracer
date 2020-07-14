@@ -28,6 +28,12 @@ class Survey_pertanyaan_model extends CI_Model {
         return $this->db->get('survei_pertanyaan');
     }
 
+    public function getByIdPertanyaanSatu($id)
+    {
+        $this->db->where('id_survei',$id);
+        return $this->db->get('survei_pertanyaan',1);
+    }
+
     public function getByIdPertanyaanLimit($id,$idPertanyaan)
     {
         $this->db->where('id_survei',$id);
