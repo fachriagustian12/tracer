@@ -18,6 +18,12 @@ class Users_model extends CI_Model {
         return $this->db->get('user');
     }
 
+    public function getById($id)
+    {
+        $this->db->where('id',$id);
+        return $this->db->get('user');
+    }
+
     public function getAll()
     {
         return $this->db->get('users');
@@ -60,16 +66,59 @@ class Users_model extends CI_Model {
 
     public function update($id,$new_foto)
     {
-        $data=array(
-            'nama_depan'=>$this->input->post('nama_depan'),
-            'nama_belakang'=>$this->input->post('nama_belakang'),
-            'jenis_kelamin'=>$this->input->post('jenis_kelamin'),
-            'telp'=>$this->input->post('telp'),
-            'email'=>$this->input->post('email'),
-            'alamat'=>$this->input->post('alamat'),
-            'username'=>$this->input->post('username'),
-            'foto'=>$new_foto
-        );
+        if ($this->session->userdata('id_user_grup')==3) {
+            $pekerjaan='';
+            if ($this->input->post('pekerjaan')!=="") {
+                $pekerjaan =$this->input->post('pekerjaan');
+            }else{
+                $pekerjaan = $this->input->post('old_pekerjaan');
+            }
+            $bidang='';
+            if ($this->input->post('pekerjaan')==1) {
+                if ($this->input->post('bidang_pekerjaan')!=="") {
+                    $bidang=$this->input->post('bidang_pekerjaan');
+                }else{
+                    $bidang=$this->input->post('old_bidang_pekerjaan');
+                }
+            }else{
+                if ($this->input->post('bidang_pekerjaan2')!=="") {
+                    $bidang=$this->input->post('bidang_pekerjaan2');
+                }else{
+                    $bidang=$this->input->post('old_bidang_pekerjaan2');
+                }
+            }
+            $data=array(
+                'nama_depan'=>$this->input->post('nama_depan'),
+                'nama_belakang'=>$this->input->post('nama_belakang'),
+                'jenis_kelamin'=>$this->input->post('jenis_kelamin'),
+                'tgl_lahir'=>$this->input->post('tgl_lahir'),
+                'telp'=>$this->input->post('telp'),
+                'email'=>$this->input->post('email'),
+                'alamat'=>$this->input->post('alamat'),
+                'username'=>$this->input->post('username'),
+                'tahun_lulus'=>$this->input->post('tahun_lulus'),
+                'mulai_kerja'=>$this->input->post('mulai_kerja'),
+                'angkatan'=>$this->input->post('angkatan'),
+                'pekerjaan'=>$pekerjaan,
+                'bidang_pekerjaan'=>$bidang,
+                'jabatan'=>$this->input->post('jabatan'),
+                'alamat_kerja'=>$this->input->post('alamat_kerja'),
+                'kota'=>$this->input->post('kota'),
+                'foto'=>$new_foto
+            );
+        }else{
+            $data=array(
+                'nama_depan'=>$this->input->post('nama_depan'),
+                'nama_belakang'=>$this->input->post('nama_belakang'),
+                'jenis_kelamin'=>$this->input->post('jenis_kelamin'),
+                'telp'=>$this->input->post('telp'),
+                'email'=>$this->input->post('email'),
+                'alamat'=>$this->input->post('alamat'),
+                'username'=>$this->input->post('username'),
+                'foto'=>$new_foto
+            );
+        }
+        
         $this->db->where('id',$id);
         $query=$this->db->update('user',$data);
         if ($query ) {

@@ -55,5 +55,7 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['admin'] = "backend/dashboard/index";
 $route['alumni'] = "backend/users/alumni";
+$route['editProfil/(:any)'] = "backend/users/editProfil/$1";
+$route['updateProfil/(:any)/(:any)'] = "backend/users/update/$1/$1";
 $route['detailSurvey/(:any)'] = "backend/survey/survei/$1";
 $route['lakukanSurvey/(:any)/(:any)'] = "backend/survey/lakukansurvei/$1/$1";

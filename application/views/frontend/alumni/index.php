@@ -38,6 +38,7 @@
 </head>
 
 <body>
+  <?= $this->session->flashdata('status');?>
 
   <!-- ======= Mobile nav toggle button ======= -->
   <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
@@ -97,7 +98,7 @@
       <div class="container">
 
         <div class="section-title">
-          <h2>About</h2>
+          <h2>About <span class="float-right"><a href="<?= base_url('editProfil/'.$this->session->userdata('id')) ?>" id="profilEdit" class="btn btn-primary btn-sm"><i class="bx bx-edit"></i> Edit Profil </a></span> </h2>
           <!-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> -->
         </div>
 

@@ -84,24 +84,36 @@ class Users extends CI_Controller {
             $new_foto=$this->input->post('old_foto');
             $data=$this->users_model->update($id,$new_foto);
             if($data==true){
-				$this->session->set_flashdata('kondisi','1');
+                $this->session->set_flashdata('kondisi','1');
                 $this->session->set_flashdata('status','update berhasil !');
+                if ($this->session->userdata('id_user_grup')==3) {
+                    redirect('alumni');
+                }
                 redirect('backend/users/user/'.$level);
             }else {
-				$this->session->set_flashdata('kondisi','0');
+                $this->session->set_flashdata('kondisi','0');
                 $this->session->set_flashdata('status','update gagal !');
+                                if ($this->session->userdata('id_user_grup')==3) {
+                                    redirect('alumni');
+                                }
                 redirect('backend/users/user/'.$level);
             }
 		}else {
             $new_foto=$this->upload->data('file_name');
             $data=$this->users_model->update($id,$new_foto);
             if($data==true){
-				$this->session->set_flashdata('kondisi','1');
+                $this->session->set_flashdata('kondisi','1');
                 $this->session->set_flashdata('status','Edit data berhasil !');
+                if ($this->session->userdata('id_user_grup')==3) {
+                    redirect('alumni');
+                }
                 redirect('backend/users/user/'.$level);
             }else {
-				$this->session->set_flashdata('kondisi','0');
+                $this->session->set_flashdata('kondisi','0');
                 $this->session->set_flashdata('status','Edit data gagal !');
+                        if ($this->session->userdata('id_user_grup')==3) {
+                            redirect('alumni');
+                        }
                 redirect('backend/users/user/'.$level);
             }
         }
@@ -179,5 +191,13 @@ class Users extends CI_Controller {
         $data['loker']=$this->loker_model->getAll()->result();
         $data['survey']=$this->survey_model->getAll()->result();
         $this->load->view('frontend/alumni/index',$data);
+    }
+
+    public function editProfil($id)
+    {
+		$this->load->model('pekerjaan_model');
+        $data['user'] = $this->users_model->getById($id)->row();
+        $data['pekerjaan'] = $this->pekerjaan_model->getAll()->result();
+        $this->load->view('frontend/alumni/editProfil',$data);
     }
 }
