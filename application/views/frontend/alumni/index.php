@@ -54,11 +54,7 @@
 
       <nav class="nav-menu">
         <ul>
-<<<<<<< HEAD
-          <li class="active"><a href="#home"><i class="bx bx-home"></i> <span>Home</span></a></li>
-=======
-          <!-- <li class="active"><a href="<?= base_url('alumni') ?>" id="home"><i class="bx bx-home"></i> <span>Home</span></a></li> -->
->>>>>>> e021e2be8548dc863ea72ca10b6cace0ef356541
+          <!-- <li class="active"><a href="#home"><i class="bx bx-home"></i> <span>Home</span></a></li> -->
           <li><a href="#about"><i class="bx bx-user"></i> <span>About</span></a></li>
           <li><a href="#portfolio"><i class="bx bx-book-content"></i>Loker</a></li>
           <li><a href="#services"><i class="bx bx-server"></i> Survei</a></li>
@@ -101,11 +97,7 @@
       <div class="container">
 
         <div class="section-title">
-<<<<<<< HEAD
           <h2>About</h2>
-=======
-          <h2>About <span class="float-right"><a href="" class="btn btn-info btn-sm"> <i class="bx bx-edit"></i> Edit Profil</a></span></h2>
->>>>>>> e021e2be8548dc863ea72ca10b6cace0ef356541
           <!-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> -->
         </div>
 
