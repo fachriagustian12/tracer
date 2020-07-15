@@ -81,18 +81,20 @@
                                 <?php 
                                 if ($user->status=="nonaktif") {
                                 ?>
-                                <a href="<?= base_url('backend/users/editstatus/'.$user->id.'/aktif/'.$title); ?> " class="btn btn-success btn-sm"><i class="fa fa-check"></i></a>
+                                <a href="<?= base_url('backend/users/editstatus/'.$user->id.'/aktif/'.$title); ?> " class="btn btn-success btn-sm font-weight-bold"><i class="fa fa-check"></i> AKTIFKAN</a>
                                 <?php
                                 }
                                 else {
                                   ?>
-                                  <a href="<?= base_url('backend/users/editstatus/'.$user->id.'/nonaktif/'.$title); ?> " class="btn btn-danger btn-sm"><i class="fa fa-times"></i></a>
+                                  <a href="<?= base_url('backend/users/editstatus/'.$user->id.'/nonaktif/'.$title); ?> " class="btn btn-danger btn-sm font-weight-bold"><i class="fa fa-times"></i> NONAKTIFKAN</a>
                                   <?php
                                 }
                                 ?>
                                 <a class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal_view<?= $user->id ?>"><i class="fa fa-eye"></i></a>
+                                <?php if($title=="2"){ ?>
                                 <a class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal_edit<?= $user->id ?>"><i class="fa fa-edit"></i></a>
                                 <a href="<?= base_url('backend/users/delete/'.$user->id.'/'.$title) ?>" class="btn btn-danger btn-sm" onclick="return confirm('anda yakin ingini menghapus data tersebut ?')"><i class="fa fa-trash"></i></a>
+                                <?php } ?>
                               </td>
 
                             </tr>

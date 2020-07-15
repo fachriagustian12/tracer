@@ -33,29 +33,34 @@ class Login extends CI_Controller {
         $cek_user = $this->users_model->cek_user();
 		if ($cek_user->num_rows() > 0) {
 			foreach($cek_user->result() as $user){
-				$sess = array(
-					'isLogin' => "1",
-					'id' => $user->id,
-					'id_user_grup' => $user->id_user_grup,
-					'nama_depan'=> $user->nama_depan,
-					'nama_belakang'=> $user->nama_belakang,
-					'jenis_kelamin'=> $user->jenis_kelamin,
-					'tgl_lahir' => $user->tgl_lahir,
-					'telp' => $user->telp,
-					'alamat' => $user->alamat,
-					'email' => $user->email,
-					'tahun_lulus' => $user->tahun_lulus,
-					'angkatan' => $user->angkatan,
-					'pekerjaan' => $user->pekerjaan,
-					'mulai_kerja' => $user->mulai_kerja,
-					'bidang_pekerjaan' => $user->bidang_pekerjaan,
-					'jabatan' => $user->jabatan,
-					'foto' => $user->foto,
-					'username' => $user->username,
-					'status' => $user->status
-
-				);
-				$this->session->set_userdata($sess);
+				if ($user->status=="aktif") {
+					$sess = array(
+						'isLogin' => "1",
+						'id' => $user->id,
+						'id_user_grup' => $user->id_user_grup,
+						'nama_depan'=> $user->nama_depan,
+						'nama_belakang'=> $user->nama_belakang,
+						'jenis_kelamin'=> $user->jenis_kelamin,
+						'tgl_lahir' => $user->tgl_lahir,
+						'telp' => $user->telp,
+						'alamat' => $user->alamat,
+						'email' => $user->email,
+						'tahun_lulus' => $user->tahun_lulus,
+						'angkatan' => $user->angkatan,
+						'pekerjaan' => $user->pekerjaan,
+						'mulai_kerja' => $user->mulai_kerja,
+						'bidang_pekerjaan' => $user->bidang_pekerjaan,
+						'jabatan' => $user->jabatan,
+						'foto' => $user->foto,
+						'username' => $user->username,
+						'status' => $user->status
+	
+					);
+					$this->session->set_userdata($sess);
+				}else{
+					$this->session->set_flashdata('login','Akun anda belum aktif ! Silahkan tunggu 1x24jam atau bila sudah melebihi waktu tersebut silahkan hubungi dosen atau admin Program Studi Informatika');
+					redirect('login');
+				}
 			}
 			if ($this->session->userdata('id_user_grup')==1) {
 				$this->session->set_flashdata('login','Selamat Datang !');

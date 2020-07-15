@@ -31,6 +31,20 @@
     ?>
     <!-- Content Header (Page header) -->
     <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark"></h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="<?= base_url('admin') ?>">Home</a></li>
+              <li class="breadcrumb-item"><a href="<?= base_url('backend/survey') ?>">Survey </a></li>
+              <li class="breadcrumb-item active">Detail Survey</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
 
@@ -61,7 +75,7 @@
                             <form action="<?= base_url('backend/survey_pertanyaan/tambah/'.$title) ?>" method="post">
                                 <div class="form-group">
                                     <label for="" class="form-control-label">Pertanyaan</label>
-                                    <input type="text" class="form-control" name="pertanyaan">
+                                    <input type="text" class="form-control" name="pertanyaan" required>
                                 </div>
                                 <div class="form-group">
                                     <input type="submit" class="btn btn-primary btn-sm float-right" name="submit" value="Tambah">

@@ -188,6 +188,7 @@ class Users extends CI_Controller {
     {
         $this->load->model('loker_model');
         $this->load->model('survey_model');
+        $data['user'] = $this->users_model->getById($this->session->userdata('id'))->row();
         $data['loker']=$this->loker_model->getAll()->result();
         $data['survey']=$this->survey_model->getAll()->result();
         $this->load->view('frontend/alumni/index',$data);

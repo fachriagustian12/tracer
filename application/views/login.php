@@ -62,7 +62,7 @@
             $("#alertLogin").fadeTo(500, 0).slideUp(500, function(){
                 $(this).remove(); 
             });
-        }, 2000);
+        }, 4000);
     </script>
     <script src="<?= base_url('assets/login/') ?>vendor/jquery/jquery.min.js"></script>
     <script src="<?= base_url('assets/login/') ?>js/main.js"></script>

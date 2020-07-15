@@ -54,5 +54,15 @@ class Loker extends CI_Controller {
                 redirect('backend/users/alumni');
             }
         }
-	}
+    }
+    
+    public function loker($id)
+    {
+        $this->load->model('users_model');
+        $data['user'] = $this->users_model->getAll()->result();
+        $data['loker'] = $this->loker_model->getById($id)->row();
+        $this->load->view('frontend/alumni/loker',$data);
+    }
+
+
 }
