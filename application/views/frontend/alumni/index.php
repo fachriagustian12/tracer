@@ -49,8 +49,8 @@
 
       <div class="profile">
         <img src="<?= base_url('assets')?>/user/<?= $this->session->userdata('foto')?>" alt="" class="img-fluid rounded-circle">
-        <h1 class="text-light"><?= ucfirst($this->session->userdata('nama_depan'))?></h1>
-        <h1 class="text-light"><?= ucfirst($this->session->userdata('nama_belakang'))?></h1>
+        <h1 class="text-light"><?= ucfirst($user->nama_depan)?></h1>
+        <h1 class="text-light"><?= ucfirst($user->nama_belakang)?></h1>
       </div>
 
       <nav class="nav-menu">
@@ -87,7 +87,7 @@
     <?php } endif;?>
     <div class="hero-container" data-aos="fade-in">
       <h1><?= ucfirst($this->session->userdata('nama_depan'))." ".ucfirst($this->session->userdata('nama_belakang'))?></h1>
-      <p>I'm <span class="typed" data-typed-items="<?= $this->session->userdata('jabatan')?>"></span></p>
+      <p>I'm <span class="typed" data-typed-items="<?= $user->jabatan?>"></span></p>
     </div>
   </section><!-- End Hero -->
 
@@ -107,7 +107,7 @@
             <img src="<?= base_url('assets')?>/user/<?= $this->session->userdata('foto')?>" class="img-fluid" alt="">
           </div>
           <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-            <h3><?= $this->session->userdata('jabatan')?></h3>
+            <h3><?= $user->jabatan?></h3>
             <!-- <p class="font-italic">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
               magna aliqua.
@@ -115,20 +115,20 @@
             <div class="row">
               <div class="col-lg-6">
                 <ul>
-                  <li><i class="icofont-rounded-right"></i> <strong>Tanggah Lahir: </strong> <?= $this->session->userdata('tgl_lahir')?></li>
-                  <li><i class="icofont-rounded-right"></i> <strong>Jenis Kelamin: </strong> <?= $this->session->userdata('jenis_kelamin')?>
-                  <li><i class="icofont-rounded-right"></i> <strong>Telepon : </strong> <?= $this->session->userdata('telp')?></li>
-                  <li><i class="icofont-rounded-right"></i> <strong>Alamat: </strong> <?= $this->session->userdata('alamat')?></li>
-                  <li><i class="icofont-rounded-right"></i> <strong>Bidang Pekerjaan: </strong><?= $this->session->userdata('bidang_pekerjaan')?></li>
+                  <li><i class="icofont-rounded-right"></i> <strong>Tanggah Lahir: </strong> <?= $user->tgl_lahir?></li>
+                  <li><i class="icofont-rounded-right"></i> <strong>Jenis Kelamin: </strong> <?= $user->jenis_kelamin?>
+                  <li><i class="icofont-rounded-right"></i> <strong>Telepon : </strong> <?= $user->telp?></li>
+                  <li><i class="icofont-rounded-right"></i> <strong>Alamat: </strong> <?= $user->alamat?></li>
+                  <li><i class="icofont-rounded-right"></i> <strong>Bidang Pekerjaan: </strong><?= $user->bidang_pekerjaan ?></li>
                 </ul>
               </div>
               <div class="col-lg-6">
                 <ul>
-                  <li><i class="icofont-rounded-right"></i> <strong>Email:</strong> <?= $this->session->userdata('email')?></li>
-                  <li><i class="icofont-rounded-right"></i> <strong>Tahun Lulus:</strong> <?= $this->session->userdata('tahun_lulus')?></li>
-                  <li><i class="icofont-rounded-right"></i> <strong>Angkatan:</strong> <?= $this->session->userdata('angkatan')?></li>
-                  <li><i class="icofont-rounded-right"></i> <strong>Mulai Kerja:</strong> <?= $this->session->userdata('mulai_kerja')?></li>
-                  <li><i class="icofont-rounded-right"></i> <strong>Pekerjaan:</strong> <?= $this->session->userdata('pekerjaan')?></li>
+                  <li><i class="icofont-rounded-right"></i> <strong>Email:</strong> <?= $user->email?></li>
+                  <li><i class="icofont-rounded-right"></i> <strong>Tahun Lulus:</strong> <?= $user->tahun_lulus?></li>
+                  <li><i class="icofont-rounded-right"></i> <strong>Angkatan:</strong> <?= $user->angkatan?></li>
+                  <li><i class="icofont-rounded-right"></i> <strong>Mulai Kerja:</strong> <?= $user->mulai_kerja?></li>
+                  <li><i class="icofont-rounded-right"></i> <strong>Pekerjaan:</strong> <?= $user->pekerjaan==1 ? 'Bidang IT' : 'Lainnya' ?></li>
                 </ul>
               </div>
             </div>
@@ -169,8 +169,8 @@
             <div class="portfolio-wrap">
               <img src="<?= base_url('assets/loker/'.$loker->foto)?>" width="100%" class="img-fluid" alt="">
               <div class="portfolio-links">
-                <a href="<?= base_url('assets/loker/'.$loker->foto)?>" data-gall="portfolioGallery" class="venobox" title="App 1"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                <a href="<?= base_url('assets/loker/'.$loker->foto)?>" data-gall="portfolioGallery" class="venobox" title="Klik untuk memperbesar Gambar"><i class="bx bx-images"></i></a>
+                <a href="<?= base_url('detailLoker/'.$loker->id) ?>" title="Detail Loker"><i class="bx bx-link"></i></a>
               </div>
             </div>
           </div>
@@ -193,35 +193,25 @@
             <form action="<?= base_url('frontend/loker/tambah/'.$this->session->userdata('id')) ?>" method="post" role="form" class="php-email-form" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="name">Judul Lowongan</label>
-                    <input type="text" class="form-control" name="judul" id="judul" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                    <div class="validate"></div>
+                    <input type="text" class="form-control" name="judul" id="judul" required />
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                     <label for="name">Tanggal Sekarang</label>
-                    <input type="text" name="tgl_buat" class="form-control" id="datepicker" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                    <div class="validate"></div>
+                    <input type="text" name="tgl_buat" class="form-control" id="datepicker" required/>
                     </div>
                     <div class="form-group col-md-6">
                     <label for="name">Batas Akhir lowongan</label>
-                    <input type="text" class="form-control" name="tgl_akhir" id="datepicker1" data-rule="minlen:4" data-msg="Please enter a valid date" />
-                    <div class="validate"></div>
+                    <input type="text" class="form-control" name="tgl_akhir" id="datepicker1" required/>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="name">Deskripsi</label>
-                    <textarea class="form-control" name="deskripsi" id="deskripsi" rows="10" data-rule="required" data-msg="Please write something for us"></textarea>
-                    <div class="validate"></div>
+                    <textarea class="form-control" name="deskripsi" id="deskripsi" rows="10" required></textarea>
                 </div>
                 <div class="form-group">
                     <label for="name">Foto</label>
-                    <input type="file" class="form-control" name="foto"  />
-                    <div class="validate"></div>
-                </div>
-                <div class="mb-3">
-                    <div class="loading">Loading</div>
-                    <div class="error-message"></div>
-                    <div class="sent-message">Your message has been sent. Thank you!</div>
+                    <input type="file" class="form-control" name="foto" required/>
                 </div>
                 <div class="text-center"><button type="submit">Simpan</button></div>
             </form>
@@ -262,7 +252,7 @@
 
         <div class="section-title">
           <h2>Ganti Password</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <!-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> -->
         </div>
 
         <div class="row" data-aos="fade-in">
@@ -274,11 +264,11 @@
                 </div>
                 <div class="form-group">
                     <label for="name">New Password</label>
-                    <input type="password" class="form-control" name="new_password" id="newPass" />
+                    <input type="password" class="form-control" name="new_password" id="newPass" required />
                 </div>
                 <div class="form-group">
                     <label for="name">Confirm Password</label>
-                    <input type="password" class="form-control" name="confirm_password" id="conPass" />
+                    <input type="password" class="form-control" name="confirm_password" id="conPass" required />
                 </div>
                 <div class="mb-3">
                     <div class="loading">Loading</div>

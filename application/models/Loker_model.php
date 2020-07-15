@@ -26,4 +26,10 @@ class Loker_model extends CI_Model {
             return FALSE;
         }
     }
+
+    public function getById($id)
+    {
+        $this->db->where('id',$id);
+        return $this->db->get('loker');
+    }
 }
