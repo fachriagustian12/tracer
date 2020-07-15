@@ -17,7 +17,7 @@ class Loker_model extends CI_Model {
             'tgl_buat'=> $this->input->post('tgl_buat'),
             'tgl_akhir'=> $this->input->post('tgl_akhir'),
             'foto'=> $foto,
-            'status'=>'unpublish',
+            'status'=>'unpublish'
         );
         $query = $this->db->insert('loker',$data);
         if ($query) {
