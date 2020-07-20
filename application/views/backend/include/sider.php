@@ -55,27 +55,25 @@
                 </ul>
             </li>
             <li class="nav-item">
-                <a href="<?= base_url('admin') ?>" class="nav-link">
+                <a href="<?= base_url('backend/survey/hasilSurvey') ?>" class="nav-link">
                     <i class="nav-icon fas fa-edit"></i>
                     <p>Hasil Survey</p>
                 </a>
             </li>
             <?php if($this->session->userdata('id_user_grup')==2): ?>
             <li class="nav-item">
-                    <a href="<?= base_url('backend/survey') ?>" class="nav-link">
+                <a href="<?= base_url('backend/survey') ?>" class="nav-link">
                     <i class="nav-icon fas fa-search-plus"></i>
-                    <p>
-                    Survei
-                    </p>
-              </a>
-              </li>
-              <li class="nav-item">
-                    <a href="<?= base_url('backend/users/ubahpassword')?>" class="nav-link">
-                    <i class="nav-icon fas fa-cogs"></i>
-                    <p>
-                    Ubah Password
-                    </p>
-              </a>
+                    <p>Survei</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="<?= base_url('backend/users/ubahpassword')?>" class="nav-link">
+                <i class="nav-icon fas fa-cogs"></i>
+                <p>
+                Ubah Password
+                </p>
+            </a>
             </li>
             <?php endif ?>
         </ul>

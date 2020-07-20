@@ -5,7 +5,7 @@ class Jawaban_pertanyaan_model extends CI_Model {
 
     public function getAll()
     {
-        return $this->db->get('survei');
+        return $this->db->get('jawaban_pertanyaan');
     }
 
     public function getById($id)

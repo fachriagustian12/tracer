@@ -22,7 +22,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard v1</li>
+              <li class="breadcrumb-item active">Dashboard</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -35,66 +35,139 @@
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
-          <div class="col-lg-3 col-6">
+        <?php if($this->session->userdata('id_user_grup')==2){ ?>
+          <div class="col-lg-6 col-6">
             <!-- small box -->
-            <div class="small-box bg-info">
+            <div class="small-box bg-info ">
               <div class="inner">
-                <h3>150</h3>
-
-                <p>New Orders</p>
+                <h2 class="display-4 font-weight-bold text-center"><?= $user ?></h2>
+                <h4 class="text-center font-weight-bold">Users Alumni</h4>
               </div>
-              <div class="icon">
-                <i class="ion ion-bag"></i>
+              <div class="icon ">
+                <i class="fa fa-users "></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="#" class="small-box-footer">Kelola Alumni <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
-          <div class="col-lg-3 col-6">
+          <div class="col-lg-6 col-6">
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
+                <h2 class="display-4 font-weight-bold text-center"><?= $survey ?></h2>
+                <h4 class="text-center font-weight-bold">Survey Tersedia</h4>
 
-                <p>Bounce Rate</p>
               </div>
               <div class="icon">
-                <i class="ion ion-stats-bars"></i>
+                <i class="fa fa-edit"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="#" class="small-box-footer">Kelola Survey <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
-          <div class="col-lg-3 col-6">
+          <!-- ./col -->
+        <?php }else{ ?>
+          <div class="col-lg-6 col-6">
             <!-- small box -->
-            <div class="small-box bg-warning">
+            <div class="small-box bg-primary ">
               <div class="inner">
-                <h3>44</h3>
-
-                <p>User Registrations</p>
+                <h2 class="display-3 font-weight-bold text-center"><?= $userDosen ?></h2>
+                <h4 class="text-center font-weight-bold">Users Dosen</h4>
               </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
+              <div class="icon ">
+                <i class="fa fa-users "></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="#" class="small-box-footer">Kelola Dosen <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
-          <div class="col-lg-3 col-6">
+          <div class="col-lg-6 col-6">
             <!-- small box -->
-            <div class="small-box bg-danger">
+            <div class="small-box bg-success">
               <div class="inner">
-                <h3>65</h3>
+                <h2 class="display-3 font-weight-bold text-center"><?= $user ?></h2>
+                <h4 class="text-center font-weight-bold">Users Alumni</h4>
 
-                <p>Unique Visitors</p>
               </div>
               <div class="icon">
-                <i class="ion ion-pie-graph"></i>
+                <i class="fa fa-users"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="#" class="small-box-footer">Kelola Alumni <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
-          <!-- ./col -->
+        <?php } ?>
+        </div>
+        <div class="row">
+        <?php if($this->session->userdata('id_user_grup')==1){ ?>
+          <div class="col-md-6">
+            <!-- PIE CHART -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Jumlah Gender Dosen</h3>
+                <?php 
+                  $priaDSN = 0;
+                  $perempuanDSN = 0;
+                  $jmlhJKDSN = array();
+
+                  foreach($usersDosen as $dosen):
+                    if($dosen->jenis_kelamin == 'L'){
+                      $priaDSN += 1;
+                    }else{
+                      $perempuanDSN += 1;
+                    }
+                  endforeach;
+                  
+                  array_push($jmlhJKDSN,$priaDSN);
+                  array_push($jmlhJKDSN,$perempuanDSN);
+                ?>
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                </div>
+              </div>
+              <div class="card-body">
+                <canvas id="jkChartDSN" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+                <?php } ?>
+          <div class="col-md-6">
+            <!-- PIE CHART -->
+            <div class="card card-success">
+              <div class="card-header">
+                <h3 class="card-title">Jumlah Gender Alumni</h3>
+                <?php 
+                  $pria = 0;
+                  $perempuan = 0;
+                  $jmlhJK = array();
+
+                  foreach($users as $user):
+                    if($user->jenis_kelamin == 'L'){
+                      $pria += 1;
+                    }else{
+                      $perempuan += 1;
+                    }
+                  endforeach;
+                  
+                  array_push($jmlhJK,$pria);
+                  array_push($jmlhJK,$perempuan);
+                ?>
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                </div>
+              </div>
+              <div class="card-body">
+                <canvas id="jkChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -102,4 +175,61 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+  <script src="<?= base_url('assets/backend/') ?>plugins/jquery/jquery.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>
+  <script>
+      $(function(){
+          var pieChart ='#jkChartDSN';
+          var pieChartCanvas = $(pieChart).get(0).getContext('2d');
+          var donutData        = {
+          labels: ['Laki-Laki','Perempuan'],
+          datasets: [
+              {
+              data: [<?= join($jmlhJKDSN,',') ?>],
+              backgroundColor : ['#4addac','#FC4A1A'],
+              }
+          ]
+          }
+          var pieData        = donutData;
+          var pieOptions     = {
+          maintainAspectRatio : false,
+          responsive : true,
+          }
+          //Create pie or douhnut chart
+          // You can switch between pie and douhnut using the method below.
+          var pieChart = new Chart(pieChartCanvas, {
+          type: 'pie',
+          data: pieData,
+          options: pieOptions      
+          });
+      });
+  </script>
+  <script>
+      $(function(){
+          var pieChart ='#jkChart';
+          var pieChartCanvas = $(pieChart).get(0).getContext('2d');
+          var donutData        = {
+          labels: ['Laki-Laki','Perempuan'],
+          datasets: [
+              {
+              data: [<?= join($jmlhJK,',') ?>],
+              backgroundColor : ['#4addac','#FC4A1A'],
+              }
+          ]
+          }
+          var pieData        = donutData;
+          var pieOptions     = {
+          maintainAspectRatio : false,
+          responsive : true,
+          }
+          //Create pie or douhnut chart
+          // You can switch between pie and douhnut using the method below.
+          var pieChart = new Chart(pieChartCanvas, {
+          type: 'pie',
+          data: pieData,
+          options: pieOptions      
+          });
+      });
+  </script>
   

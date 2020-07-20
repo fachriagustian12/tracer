@@ -136,4 +136,22 @@ class Survey extends CI_Controller {
 		$data['surveyJawaban'] = $this->survey_jawaban_model->getByIdJawaban($idSurvei,$idPertanyaan)->result();
 		$this->load->view('frontend/alumni/lakukanSurvei',$data);
 	}
+
+	public function hasilSurvey()
+	{
+		$this->load->model('survey_pertanyaan_model');
+		$this->load->model('survey_jawaban_model');
+		$this->load->model('jawaban_pertanyaan_model');
+
+		$data['survey'] = $this->survey_model->getAll()->result();
+		$data['surveyPertanyaan'] = $this->survey_pertanyaan_model->getAll()->result();
+		$data['surveyJawaban'] = $this->survey_jawaban_model->getAll()->result();
+		$data['cekJawabanUser'] = $this->jawaban_pertanyaan_model->getAll()->result();
+		$this->load->view('backend/include/head');
+		$this->load->view('backend/include/navbar');
+		$this->load->view('backend/include/sider');
+		$this->load->view('backend/hasilSurvey',$data);
+		$this->load->view('backend/include/footer');
+	}
+
 }

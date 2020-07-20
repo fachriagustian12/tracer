@@ -130,7 +130,8 @@
                     </div>
                     <div class="form-group">
                         <label for="nama_depan" class="form-control-label">Tanggal Update</label>
-                        <input type="text" class="form-control" name="tgl_update" value="<?= $survey->tgl_update ?>">
+                        <?php $date = date('d m yy'); ?>
+                        <input type="text" class="form-control" name="tgl_update" value="<?= $date ?>">
                     </div>
             </div>
             <div class="modal-footer justify-content-between">
@@ -167,15 +168,16 @@
             </div>
             <div class="form-group">
                 <label for="nama_depan" class="form-control-label">Tanggal Mulai</label>
-                <input type="text" class="form-control" name="tgl_mulai" >
+                <input type="text" id="tgl_mulai" class="form-control" name="tgl_mulai" >
             </div>
             <div class="form-group">
                 <label for="nama_depan" class="form-control-label">Tanggal Berakhir</label>
-                <input type="text" class="form-control" name="tgl_berahkir" >
+                <input type="text" id="tgl_berakhir" class="form-control" name="tgl_berahkir" >
             </div>
             <div class="form-group">
                 <label for="nama_depan" class="form-control-label">Tanggal Update</label>
-                <input type="text" class="form-control" name="tgl_update">
+                <?php $date = date('d m yy'); ?>
+                <input type="text" id="tgl_update" class="form-control" name="tgl_update" value="<?= $date ?>" readonly>
             </div>
         </div>
         <div class="modal-footer justify-content-between">

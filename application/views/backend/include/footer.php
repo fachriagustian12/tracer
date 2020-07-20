@@ -25,9 +25,8 @@
 <!-- Bootstrap 4 -->
 <script src="<?= base_url('assets/backend/') ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- ChartJS -->
-<script src="<?= base_url('assets/backend/') ?>plugins/chart.js/Chart.min.js"></script>
 <!-- Sparkline -->
-<script src="plugins/sparklines/sparkline.js"></script>
+<!-- <script src="<?= base_url('assets/backend/') ?>plugins/sparklines/sparkline.js"></script> -->
 <!-- JQVMap -->
 <script src="<?= base_url('assets/backend/') ?>plugins/jqvmap/jquery.vmap.min.js"></script>
 <script src="<?= base_url('assets/backend/') ?>plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
@@ -45,9 +44,11 @@
 <!-- AdminLTE App -->
 <script src="<?= base_url('assets/backend/') ?>dist/js/adminlte.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="<?= base_url('assets/backend/') ?>dist/js/pages/dashboard.js"></script>
+<!-- <script src="<?= base_url('assets/backend/') ?>dist/js/pages/dashboard.js"></script> -->
 <!-- AdminLTE for demo purposes -->
 <script src="<?= base_url('assets/backend/') ?>dist/js/demo.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js" type="text/javascript"></script>
+
 <script>
         jQuery(document).ready(function() {
             window.setTimeout(function() {
@@ -56,11 +57,13 @@
                 });
             }, 2000);
 
-            // jQuery("#tahun").datepicker({
-            //     format: "yyyy",
-            //     viewMode: "years", 
-            //     minViewMode: "years"
-            // });
+            jQuery("#tgl_mulai").datepicker({
+                format: "dd mm yyyy"
+            });
+            jQuery("#tgl_berakhir").datepicker({
+                format: "dd mm yyyy"
+            });
+            
 
             jQuery('#showpassword').click(function(){
               if(jQuery('#oldPass').attr('type')=="password"){
