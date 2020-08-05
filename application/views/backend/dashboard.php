@@ -168,6 +168,21 @@
             </div>
             <!-- /.card -->
           </div>
+          <div class="col-md-6">
+              <div class="card card-info">
+                  <div class="card-header">
+                      <h3 class="card-title"> <span class="font-weight-bold"> Hasil K-Means </h3>
+                  </div>
+                  <?php 
+                    $hasilJumlahData = $kmeans->jumlahData1 + $kmeans->jumlahData2;
+                    $data1 = ($kmeans->jumlahData1 / $hasilJumlahData)*100;
+                    $data2 = ($kmeans->jumlahData2 / $hasilJumlahData)*100;
+                  ?>
+                  <div class="card-body">
+                      <canvas id="pieChartKmeans" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                  </div>
+              </div>
+          </div>
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -232,4 +247,30 @@
           });
       });
   </script>
-  
+  <script>
+      $(function(){
+          var pieChart ='#pieChartKmeans';
+          var pieChartCanvas = $(pieChart).get(0).getContext('2d');
+          var donutData        = {
+          labels: ['Sesuai Konsentrasi (%)','Tidak Sesuiai Konsentrasi (%)'],
+          datasets: [
+              {
+              data: [<?= $data1 ?>,<?= $data2 ?>],
+              backgroundColor : ['#1abc9c','#2ecc71'],
+              }
+          ]
+          }
+          var pieData        = donutData;
+          var pieOptions     = {
+          maintainAspectRatio : false,
+          responsive : true,
+          }
+          //Create pie or douhnut chart
+          // You can switch between pie and douhnut using the method below.
+          var pieChart = new Chart(pieChartCanvas, {
+          type: 'pie',
+          data: pieData,
+          options: pieOptions      
+          });
+      });
+  </script>

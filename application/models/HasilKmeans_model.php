@@ -5,7 +5,7 @@ class HasilKmeans_model extends CI_Model {
 
     public function getAll()
     {
-        return $this->db->get('cluster');
+        return $this->db->get('hasilkmeans');
     }
 
     public function edit($id,$j1,$j2)

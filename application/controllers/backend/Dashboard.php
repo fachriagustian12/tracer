@@ -31,11 +31,13 @@ class Dashboard extends CI_Controller {
 	{
         $this->load->model('users_model');
         $this->load->model('survey_model');
+        $this->load->model('HasilKmeans_model');
         $data['user'] = $this->users_model->getLevel(3)->num_rows();
         $data['userDosen'] = $this->users_model->getLevel(2)->num_rows();
         $data['usersDosen'] = $this->users_model->getLevel(2)->result();
         $data['users'] = $this->users_model->getLevel(3)->result();
-        $data['survey'] = $this->survey_model->getAll()->num_rows();
+		$data['survey'] = $this->survey_model->getAll()->num_rows();
+		$data['kmeans'] = $this->HasilKmeans_model->getAll()->row();
 		$this->load->view('backend/include/head');
 		$this->load->view('backend/include/navbar');
 		$this->load->view('backend/include/sider');

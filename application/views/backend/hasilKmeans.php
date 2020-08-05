@@ -182,6 +182,9 @@
                     if ($jmlhPerbedaan != 0) {
                         $j = $j+1;
                     }else if($jmlhPerbedaan == 0){
+                        $jumlahData = $jmlhdata1 + $jmlhdata2;
+                        $hasilJmlhData1 = ($jmlhdata1 / $jumlahData)*100;
+                        $hasilJmlhData2 = ($jmlhdata2 / $jumlahData)*100;
             ?>
                     <script src="<?= base_url('assets/backend/') ?>plugins/jquery/jquery.min.js"></script>
                     <script type="text/javascript">
@@ -225,11 +228,11 @@
                                 var pieChart ='#pieChartKmeans';
                                 var pieChartCanvas = $(pieChart).get(0).getContext('2d');
                                 var donutData        = {
-                                labels: ['Sesuai Konsentrasi','Tidak Sesuiai Konsentrasi'],
+                                labels: ['Sesuai Konsentrasi (%)','Tidak Sesuiai Konsentrasi (%)'],
                                 datasets: [
                                     {
-                                    data: [<?= $jmlhdata1 ?>,<?= $jmlhdata2 ?>],
-                                    backgroundColor : ['red','blue'],
+                                    data: [<?= $hasilJmlhData1 ?>,<?= $hasilJmlhData2 ?>],
+                                    backgroundColor : ['#1abc9c','#2ecc71'],
                                     }
                                 ]
                                 }
