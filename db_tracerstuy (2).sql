@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Aug 05, 2020 at 07:02 AM
--- Server version: 5.7.24
--- PHP Version: 7.2.19
+-- Host: 127.0.0.1
+-- Generation Time: Aug 05, 2020 at 09:48 AM
+-- Server version: 10.1.28-MariaDB
+-- PHP Version: 7.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -209,7 +209,26 @@ INSERT INTO `user` (`id`, `id_user_grup`, `nama_depan`, `nama_belakang`, `jenis_
 (24, 1, 'admin', 'istrator', 'L', '', '', '', '', 'admin', '21232f297a57a5a743894a0e4a801fc3', '', '', '', '', '', '', '', '', 'aktif'),
 (27, 2, 'Dosen', 'Test', 'L', '', '0832827371', 'iwanabadi@gmail.com', 'jl karapitan no11', 'dosentest', '827ccb0eea8a706c4c34a16891f84e7b', '', '', '', '', '', '', '', 'admin3.jpg', 'aktif'),
 (29, 2, 'BJ', 'SP', 'L', '', '123131313', 'traos.corp@gmail.com', 'bandung', 'bj123', 'a4165381b7249b57a8c4589fe96b6fc5', '', '', '', '', '', '', '', '1267016_4cb469fb-1e44-414a-95dc-b3b6eb5e03b2_(1).png', 'aktif'),
-(47, 3, 'Budiman', 'rahayu', 'L', '03 August 2020', '0821435784932', 'fahmyal080397@gmail.com', 'jl karapitan no11', 'budiman', '456b39e6cf4fdc9bda6b84b0a0b557dd', '2019', '2019', '2015', '1', '1', 'Jalan Taman sari no 109', 'Bandung', 'admin.jpg', 'aktif');
+(47, 3, 'Budiman', 'rahayu', 'L', '03 August 2020', '0821435784932', 'fahmyal080397@gmail.com', 'jl karapitan no11', 'budiman', '456b39e6cf4fdc9bda6b84b0a0b557dd', '2019', '2019', '2015', '1', '1', 'Jalan Taman sari no 109', 'Bandung', 'admin.jpg', 'aktif'),
+(48, 3, 'Sergi Apriatna', 'Djumantara', 'L', '26 November 1996', '087823728172', 'sergi@gmail.com', 'ciparay indah', 'sergi', '8b8d481c6dcdbd24b4e43825c5345309', '2020', '2021', '2016', 'Pilih Konsentrasi Skripsi Anda', '1', 'Jl cihapit no 26', 'Bandung', 'admin3.jpg', 'nonaktif'),
+(49, 3, 'Lora pradita', 'dasrul', 'P', '26 November 1996', '0827352435', 'lora@gmail.com', 'pasirkoja', 'lora', '174c94f5c7f5a11941cab1d8069bf820', '2020', '2020', '2016', '2', '4', 'jl buah batu 52', 'Bandung', 'admin.jpg', 'nonaktif'),
+(50, 3, 'Topan ', 'nurdiansyah', 'L', '07 January 1991', '0827352435', 'topan@gmail.com', 'tegal lega ', 'topan', '2b165d92e828c00b5b83f9dc3eb7cc20', '2017', '2018', '2011', '1', '1', 'Jl malabar 28', 'Bandung', 'admin.jpg', 'nonaktif'),
+(51, 3, 'Ridwan', 'zulkipli', 'L', '12 March 1992', '0827352435', 'ridwanzulkipli@gmail.com', 'jl pagarsih 20', 'ridwanz', '5cdc202ffe73637b8a7068fabe4ad970', '2017', '2018', '2011', '3', '1', 'jl. turangga', 'Bandung', 'admin.jpg', 'nonaktif'),
+(52, 3, 'Hendra', 'yana', 'L', '07 January 1991', '0827352435', 'hendra@gmail.com', 'jl cibolerang', 'hendra ', 'a04cca766a885687e33bc6b114230ee9', '2018', '2020', '2012', '2', '3', 'jl. tamansari', 'Bandung', 'admin.jpg', 'nonaktif'),
+(53, 3, 'Uci', 'Yulianti', 'P', '26 November 1996', '0827352435', 'uci@gmail.com', 'jl sukajadi', 'uci', 'e208ca42644926ebb0dc4fe7167f25d7', '2020', '2020', '2015', '1', '4', 'jl gegerkalong', 'bandung', 'admin.jpg', 'nonaktif'),
+(54, 3, 'Febrianto', 'rahmadi', 'L', '26 November 1996', '0827352435', 'wowo@gmail.com', 'cipedes 2', 'wowo', '1d74532f9f1977468454602d6c0d8936', '2020', '2020', '2015', '2', '2', 'Jl turangga', 'Bandung', 'admin.jpg', 'nonaktif'),
+(55, 3, 'elsa', 'meinar', 'L', '26 November 1996', '0827352435', 'elsa@gmail.com', 'baleendah', 'elsa', '783833680e6da5cf6cd7481a44d8fa4c', '2020', '2020', '2015', '1', '1', 'padjdajaran', 'bandung', 'admin.jpg', 'nonaktif'),
+(56, 3, 'andy', 'yanto', 'L', '26 November 1996', '0827352435', 'andy@gmail.com', 'jl baleendah', 'andy', 'da41bceff97b1cf96078ffb249b3d66e', '2020', '2020', '2015', '2', '4', 'jl bandung', 'Bandung', 'admin.jpg', 'nonaktif'),
+(57, 3, 'Octa', 'yudha', 'L', '26 November 1996', '0827352435', 'octa@gmail.com', 'jl soreang indah', 'octa', 'c088084621d9ff3294940742e3de37c2', '2018', '2019', '2013', '1', '1', 'jl cimahi', 'cimahi', 'admin3.jpg', 'nonaktif'),
+(58, 3, 'Shelli', 'marselina', 'P', '26 November 1996', '0827352435', 'sheli@gmail.com', 'jl banjaran', 'sheli', '9b0e1ae5236d64ea1e8285b1d820877e', '2017', '2017', '2013', '1', '4', 'jl bandung', 'Bandung', 'admin.jpg', 'nonaktif'),
+(59, 3, 'Bagja septian', 'munawar', 'L', '29 December 1996', '0827352435', 'bagja@gmail.com', 'jl ciwidet', 'bagja', '50c44453ef2277ff602723ac579154fe', '2020', '2020', '2016', '1', '1', 'jl buahbatu 52', 'Bandung', 'admin.jpg', 'nonaktif'),
+(60, 3, 'Panca', 'wiguna', 'L', '07 January 1991', '0827352435', 'panca@gmail.com', 'jl porip', 'panca', 'c9e023417fa66e852e4d1f920c051017', '2017', '2018', '2013', '1', '1', 'Jl karapitan 116', 'Bandung', 'admin.jpg', 'nonaktif'),
+(61, 3, 'Hendro', 'Prayitno', 'L', '26 November 1996', '0827352435', 'edo@gmail.com', 'katapang', 'hendro', '66cb5177a2d8017b6e71983e95659388', '2020', '2020', '2015', '3', '2', 'jl bandung', 'Bandung', 'admin.png', 'nonaktif'),
+(62, 3, 'Iqbal', 'nur ikhasn', 'L', '26 November 1996', '0827352435', 'iqbal@gmail.com', 'majalengka', 'iqbal', 'cfaf548d8190a482c3fc69df53d87ef0', '2017', '2018', '2013', '2', '2', 'jl majalengka', 'majalangkea', 'admin.jpg', 'nonaktif'),
+(63, 3, 'anisya', 'khotimah', 'P', '26 November 1996', '0827352435', 'anisya@gmail.com', 'jl rancamanyar', 'anisya', '3c3dcc6643a5f43be2b427d58b3c0185', '2020', '2020', '2015', '1', '4', 'jl merdeka', 'bandung', 'admin.png', 'nonaktif'),
+(64, 3, 'Irfan', 'rizkianto', 'L', '26 November 1996', '0827352435', 'irfan@gmail.com', 'bandung', 'irfan', '24b90bc48a67ac676228385a7c71a119', '2020', '2020', '2015', '2', '2', 'jl bandung', 'Bandung', 'admin.jpg', 'nonaktif'),
+(65, 3, 'Hari', 'setiadi', 'P', '26 November 1996', '0827352435', 'hari@gmail.com', 'bandung', 'hari', 'a9bcf1e4d7b95a22e2975c812d938889', '2019', '2020', '2014', '1', '4', 'jl bandung', 'Bandung', 'admin.jpg', 'nonaktif'),
+(66, 3, 'Baruna', 'marines', 'L', '26 November 1996', '0827352435', 'baruna@gmail.com', 'bandung', 'baruna', '2beca399ab2c4f973df7145fcac11131', '2018', '2019', '2014', '1', '1', 'Bandung', 'bandung', 'admin.jpg', 'nonaktif');
 
 -- --------------------------------------------------------
 
@@ -355,7 +374,7 @@ ALTER TABLE `survei_pertanyaan`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT for table `user_grup`
