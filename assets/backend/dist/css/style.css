@@ -3,4 +3,6 @@
 }
 .card.kmeans table.table tr td{
     font-size: 13px;
+    padding: 5px;
+    padding-left: 15px;
 }

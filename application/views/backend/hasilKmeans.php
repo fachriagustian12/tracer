@@ -29,19 +29,19 @@
     ?>
 
     <?php 
-        $c1x;
-        $c1y;
-        $c2x;
-        $c2y;
+        $c1xAwal;
+        $c1yAwal;
+        $c2xAwal;
+        $c2yAwal;
 
         foreach($centroid as $c):
             if($c->id == 1){
-                $c1x = $c->x;
-                $c1y = $c->y;
+                $c1xAwal = $c->x;
+                $c1yAwal = $c->y;
             }
             if($c->id == 2){
-                $c2x = $c->x;
-                $c2y = $c->y;
+                $c2xAwal = $c->x;
+                $c2yAwal = $c->y;
             }
         endforeach;
     ?>
@@ -51,6 +51,27 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
+            <?php 
+                $j=2;
+                for($i=0; $i<$j; $i++){
+                    if($i == 0){
+                        $c1x = $c1xAwal;
+                        $c1y = $c1yAwal;
+                        $c2x = $c2xAwal;
+                        $c2y = $c2yAwal;
+                    }else if($i != 0){
+                        $c1x = $hasilC1x;
+                        $c1y = $hasilC1y;
+                        $c2x = $hasilC2x;
+                        $c2y = $hasilC2y;
+                    }
+                    $hasilC1x = 0;
+                    $hasilC1y = 0;
+                    $hasilC2x = 0;
+                    $hasilC2y = 0;
+                    $jmlhdata1 = 0;
+                    $jmlhdata2 = 0;
+            ?>
             <div class="row">
                 <div class="col-md-8">
                     <div class="card kmeans mt-4">
@@ -71,21 +92,27 @@
                                     <td><?= $user->bidang_pekerjaan ?></td>
                                     <td>
                                         <?php 
-                                            $hasil1 = sqrt(pow($user->konsentrasi - $c1x,2) + pow($user->konsentrasi - $c1y,2));
+                                            $hasil1 = sqrt((pow($user->konsentrasi - $c1x,2)) + pow($user->bidang_pekerjaan - $c1y,2));
                                             echo $hasil1;
                                         ?>
                                     </td>
                                     <td>
                                         <?php 
-                                            $hasil2 = sqrt(pow($user->bidang_pekerjaan - $c2x,2) + pow($user->bidang_pekerjaan - $c2y,2));
+                                            $hasil2 = sqrt(pow($user->konsentrasi - $c2x,2) + pow($user->bidang_pekerjaan - $c2y,2));
                                             echo $hasil2;
                                         ?>
                                     </td>
                                     <td>
                                         <?php 
                                             if($hasil1 < $hasil2){
+                                                $hasilC1x += $user->konsentrasi;
+                                                $hasilC1y += $user->bidang_pekerjaan;
+                                                $jmlhdata1 += 1;
                                                 echo 1;
                                             }else if($hasil1 > $hasil2){
+                                                $hasilC2x += $user->konsentrasi;
+                                                $hasilC2y += $user->bidang_pekerjaan;
+                                                $jmlhdata2 += 1;
                                                 echo 2;
                                             }
                                         ?>
@@ -113,9 +140,28 @@
                                 <td><?= $c2y ?></td>
                             </tr>
                         </table>
+
+                        <table class="table mt-2">
+                            <thead class="thead-dark">
+                                <th colspan="3" class="text-center">Centroid Berikutnya</th>
+                            </thead>
+                            <tr>
+                                <td>C1</td>
+                                <td><?= $hasilC1x = $hasilC1x / $jmlhdata1 ?></td>
+                                <td><?= $hasilC1y = $hasilC1y / $jmlhdata1  ?></td>
+                            </tr>
+                            <tr>
+                                <td>C2</td>
+                                <td><?= $hasilC2x = $hasilC2x / $jmlhdata2 ?></td>
+                                <td><?= $hasilC2y = $hasilC2y / $jmlhdata2 ?></td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>
+            <?php 
+            }                           
+            ?>
         </div>
     </section>
 </div>
