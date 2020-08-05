@@ -156,7 +156,7 @@ class Users_model extends CI_Model {
             'tahun_lulus'=>$this->input->post('tahun_lulus'),
             'mulai_kerja'=>$this->input->post('mulai_kerja'),
             'angkatan'=>$this->input->post('angkatan'),
-            'pekerjaan'=>$this->input->post('pekerjaan'),
+            'konsentrasi'=>$this->input->post('konsentrasi'),
             'bidang_pekerjaan'=>$this->input->post('bidang_pekerjaan'),
             'alamat_kerja'=>$this->input->post('alamat_kerja'),
             'kota'=>$this->input->post('kota'),

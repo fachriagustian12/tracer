@@ -87,7 +87,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="pekerjaan"><i class="zmdi zmdi-account-box-mail"></i></label>
-                                <select name="pekerjaan" id="pekerjaan" required>
+                                <select name="konsentrasi" id="pekerjaan" required>
                                     <option selected>Pilih Konsentrasi Skripsi Anda</option>
                                     <?php foreach($konsentrasi as $konsentrasi): ?>
                                     <option value="<?= $konsentrasi->id ?>"><?= $konsentrasi->konsentrasi ?></option>
