@@ -34,7 +34,7 @@
         $c2xAwal;
         $c2yAwal;
 
-        foreach($centroid as $c):
+        foreach($cluster as $c):
             if($c->id == 1){
                 $c1xAwal = $c->x;
                 $c1yAwal = $c->y;
@@ -52,7 +52,7 @@
     <section class="content">
         <div class="container-fluid">
             <?php 
-                $j=2;
+                $j=1;
                 for($i=0; $i<$j; $i++){
                     if($i == 0){
                         $c1x = $c1xAwal;
@@ -65,6 +65,8 @@
                         $c2x = $hasilC2x;
                         $c2y = $hasilC2y;
                     }
+                    $semuaCluster1 = array();
+                    $semuaCluster2 = array();
                     $hasilC1x = 0;
                     $hasilC1y = 0;
                     $hasilC2x = 0;
@@ -109,11 +111,21 @@
                                                 $hasilC1y += $user->bidang_pekerjaan;
                                                 $jmlhdata1 += 1;
                                                 echo 1;
+                                                if($i==0){
+                                                    array_push($semuaCluster1,1);
+                                                }else if($i != 0){
+                                                    array_push($semuaCluster2,1);
+                                                }
                                             }else if($hasil1 > $hasil2){
                                                 $hasilC2x += $user->konsentrasi;
                                                 $hasilC2y += $user->bidang_pekerjaan;
                                                 $jmlhdata2 += 1;
                                                 echo 2;
+                                                if($i==0){
+                                                    array_push($semuaCluster1,2);
+                                                }else if($i != 0){
+                                                    array_push($semuaCluster2,2);
+                                                }
                                             }
                                         ?>
                                     </td>
@@ -160,8 +172,84 @@
                 </div>
             </div>
             <?php 
+                $jmlhPerbedaan = 0;
+                if(!empty($semuaCluster2)){
+                    for($k=0; $k < count($semuaCluster1); $k++){
+                        if($semuaCluster1[$k] == $semuaCluster2[$k]){
+                            $jmlhPerbedaan += 1;
+                        }
+                    }
+                    if ($jmlhPerbedaan != 0) {
+                        $j = $j+1;
+                    }else if($jmlhPerbedaan == 0){
+            ?>
+                    <script src="<?= base_url('assets/backend/') ?>plugins/jquery/jquery.min.js"></script>
+                    <script type="text/javascript">
+                        $(document).ready(function(){
+                            let j1 = <?= $jmlhdata1 ?>;
+                            let j2 = <?= $jmlhdata2 ?>;
+                            $.ajax({
+                                type: 'POST',
+                                url: "<?= base_url('backend/HasilKmeans/edit/1') ?>",
+                                data: {j1:j1, j2:j2},
+                                success: function(data) {
+                                    alert('Sukses Menghitung k-means !');
+                                    $('html').animate({scrollTop : $(document).height()},2600);
+                                }
+                            });
+                        });
+                    </script>
+            <?php
+                    }
+                }else{
+                    $j = $j+1;
+                }
             }                           
             ?>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card card-secondary">
+                        <div class="card-header">
+                            <h3 class="card-title"> <span class="font-weight-bold"> Hasil K-Means </h3>
+                            
+                        </div>
+                        <div class="card-body">
+                            <canvas id="pieChartKmeans" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                        </div>
+                        <script src="<?= base_url('assets/backend/') ?>plugins/jquery/jquery.min.js"></script>
+
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>
+
+                        <script>
+                            $(function(){
+                                var pieChart ='#pieChartKmeans';
+                                var pieChartCanvas = $(pieChart).get(0).getContext('2d');
+                                var donutData        = {
+                                labels: ['Sesuai Konsentrasi','Tidak Sesuiai Konsentrasi'],
+                                datasets: [
+                                    {
+                                    data: [<?= $jmlhdata1 ?>,<?= $jmlhdata2 ?>],
+                                    backgroundColor : ['red','blue'],
+                                    }
+                                ]
+                                }
+                                var pieData        = donutData;
+                                var pieOptions     = {
+                                maintainAspectRatio : false,
+                                responsive : true,
+                                }
+                                //Create pie or douhnut chart
+                                // You can switch between pie and douhnut using the method below.
+                                var pieChart = new Chart(pieChartCanvas, {
+                                type: 'pie',
+                                data: pieData,
+                                options: pieOptions      
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 </div>

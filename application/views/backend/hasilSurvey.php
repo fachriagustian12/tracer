@@ -21,7 +21,15 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
-            <?php foreach($survey as $survey): ?>
+            <?php 
+            if(empty($survey)){
+        ?>
+            <div class="card">
+                <h3>Hasil survey belum tersedia !</h3>
+            </div>
+            <?php
+            }else{
+            foreach($survey as $survey): ?>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card card-dark">
@@ -116,7 +124,7 @@
                     </div>
                 </div>
             </div>
-            <?php endforeach ?>
+            <?php endforeach; } ?>
         </div>
     </section>
 </div>

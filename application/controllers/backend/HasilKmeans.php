@@ -25,14 +25,15 @@ class HasilKmeans extends CI_Controller {
 		if ($this->session->userdata('isLogin')!="1") {
 			redirect('login');
 		}
+        $this->load->model('HasilKmeans_model');
 	}
 	
 	public function index()
 	{
         $this->load->model('users_model');
         $this->load->model('survey_model');
-		$this->load->model('centroid_model');
-		$data['centroid'] = $this->centroid_model->getAll()->result();
+		$this->load->model('cluster_model');
+		$data['cluster'] = $this->cluster_model->getAll()->result();
         // $data['user'] = $this->users_model->getLevel(3)->num_rows();
         // $data['userDosen'] = $this->users_model->getLevel(2)->num_rows();
         // $data['usersDosen'] = $this->users_model->getLevel(2)->result();
@@ -43,5 +44,13 @@ class HasilKmeans extends CI_Controller {
 		$this->load->view('backend/include/sider');
 		$this->load->view('backend/hasilKmeans',$data);
 		$this->load->view('backend/include/footer');
+	}
+
+	public function edit($id)
+	{
+		$j1 = $this->input->post('j1');
+		$j2 = $this->input->post('j2');
+		$data = $this->HasilKmeans_model->edit($id,$j1,$j2);
+		echo json_encode($data);
 	}
 }
