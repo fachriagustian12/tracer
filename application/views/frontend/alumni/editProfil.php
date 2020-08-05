@@ -128,30 +128,31 @@
                             <input type="text" class="form-control" name="mulai_kerja" id="datepicker3" value="<?= $user->mulai_kerja?>" placeholder="Mukai Kerja Tahun" required/>
                         </div>
                         <div class="form-group">
-                            <label for="pekerjaan" class="form-control-label">Pekerjaan <small>(Kosongkan jika tidak ingin di Ubah)</small></label>
-                            <select name="pekerjaan" class="form-control" id="pekerjaan">
-                                <option value="">Pilih</option>
-                                <?php foreach($pekerjaan as $pekerjaan): ?>
-                                <option value="<?= $pekerjaan->id ?>"><?= $pekerjaan->pekerjaan ?></option>
-                                <?php endforeach ?> 
+                            <label for="pekerjaan" class="form-control-label">Konsentrasi</label>
+                            <select name="konsentrasi" class="form-control" id="pekerjaan">
+                                <?php foreach($konsentrasi as $k):
+                                if($k->id == $user->konsentrasi){
+                                ?>
+                                <option value="<?= $k->id ?>" selected><?= $k->konsentrasi ?></option>
+                                <?php }else{
+                                ?>
+                                <option value="<?= $k->id ?>"><?= $k->konsentrasi ?></option>
+                                <?php } endforeach ?>
                             </select>
-                            <input type="text" class="form-control" name="old_pekerjaan" value="<?= $user->pekerjaan ?>" hidden>
-                        </div>
-                        <div class="form-group d-none" id="bidang2">
-                            <label for="sub_pekerjaan" class="form-control-label">Bidang Pekerjaan</label>
-                            <input type="text" class="form-control" name="bidang_pekerjaan2" id="bidang_pekerjaan2" placeholder="Masukan bidang pekerjaan">
-                            <input type="text" class="form-control" name="old_bidang_pekerjaan2" value="<?= $user->bidang_pekerjaan ?>" hidden>
-                        </div>
-                        <div class="form-group d-none" id="bidang1">
-                            <label for="pekerjaan" class="form-control-label">Bidang Pekerjaan</label>
-                            <select name="bidang_pekerjaan" class="form-control" id="bidang_pekerjaan"> 
-                                <option>Pilih</option>
-                            </select>
-                            <input type="text" class="form-control" name="old_bidang_pekerjaan" value="<?= $user->bidang_pekerjaan ?>" hidden>
                         </div>
                         <div class="form-group">
-                            <label for="jabatan" class="form-control-label">Jabatan</label>
-                            <input type="text" name="jabatan" class="form-control" id="name" value="<?= $user->jabatan?>" placeholder="Jabatan" required/>
+                            <label for="pekerjaan" class="form-control-label">Bidang Pekerjaan</label>
+                            <select name="bidang_pekerjaan" class="form-control" id="pekerjaan">
+                                <?php foreach($bidang_pekerjaan as $bp):
+                                if($bp->id == $user->bidang_pekerjaan){
+                                ?>
+                                <option value="<?= $bp->id ?>" selected><?= $bp->nama ?></option>
+                                <?php }else{
+                                ?>
+                                <option value="<?= $bp->id ?>"><?= $bp->nama ?></option>
+                                <?php } endforeach ?>
+                            </select>
+                            <input type="text" class="form-control" name="old_bidang_pekerjaan" value="<?= $user->bidang_pekerjaan ?>" hidden>
                         </div>
                         <div class="form-group">
                             <label for="Alamat" class="form-control-label">Alamat Kerja</label>
@@ -250,7 +251,7 @@
             });
         });
     </script>
-    <script>
+    <!-- <script>
         $(document).ready(function(){
             $('#pekerjaan').change(function(){
                 var id=$(this).val();
@@ -278,7 +279,7 @@
                 }
             });
         });
-    </script>
+    </script> -->
 
 </body>
 

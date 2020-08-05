@@ -28,7 +28,7 @@
   <!-- Template Main CSS File -->
   <link href="<?= base_url('assets/frontend/alumni')?>/css/style.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
-
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <!-- =======================================================
   * Template Name: iPortfolio - v1.3.0
   * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
@@ -38,7 +38,54 @@
 </head>
 
 <body>
-  <?= $this->session->flashdata('status');?>
+  <?php 
+    if($this->session->flashdata('login')){
+  ?>
+    <script>
+      swal("Berhasil Login !", "<?= $this->session->flashdata('login') ?>", "success", {
+        button: "OK",
+      });
+    </script>
+  <?php
+    }
+  ?>
+
+<?php 
+    if($this->session->flashdata('msg')){
+      if($this->session->flashdata('kondisi')=='1'){
+  ?>
+    <script>
+      swal("Sukses !", "<?= $this->session->flashdata('msg') ?>", "success", {
+        button: "OK",
+      });
+    </script>
+  <?php
+    }else{
+  ?>
+  <script>
+      swal("Gagal !", "<?= $this->session->flashdata('msg') ?>", "failed", {
+        button: "OK",
+      });
+  </script>
+  <?php } } ?>
+<?php 
+    if($this->session->flashdata('status')){
+      if($this->session->flashdata('kondisi')=='1'){
+  ?>
+    <script>
+      swal("Sukses !", "<?= $this->session->flashdata('status') ?>", "success", {
+        button: "OK",
+      });
+    </script>
+  <?php
+    }else{
+  ?>
+  <script>
+      swal("Gagal !", "<?= $this->session->flashdata('status') ?>", "failed", {
+        button: "OK",
+      });
+  </script>
+  <?php } } ?>
 
   <!-- ======= Mobile nav toggle button ======= -->
   <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
@@ -87,7 +134,7 @@
     <?php } endif;?>
     <div class="hero-container" data-aos="fade-in">
       <h1><?= ucfirst($this->session->userdata('nama_depan'))." ".ucfirst($this->session->userdata('nama_belakang'))?></h1>
-      <p>I'm <span class="typed" data-typed-items="<?= $user->jabatan?>"></span></p>
+      <p>I'm <span class="typed" data-typed-items="Alumni"></span></p>
     </div>
   </section><!-- End Hero -->
 
@@ -107,7 +154,7 @@
             <img src="<?= base_url('assets')?>/user/<?= $this->session->userdata('foto')?>" class="img-fluid" alt="">
           </div>
           <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-            <h3><?= $user->jabatan?></h3>
+            <h3>ALUMNI</h3>
             <!-- <p class="font-italic">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
               magna aliqua.
@@ -119,7 +166,7 @@
                   <li><i class="icofont-rounded-right"></i> <strong>Jenis Kelamin: </strong> <?= $user->jenis_kelamin?>
                   <li><i class="icofont-rounded-right"></i> <strong>Telepon : </strong> <?= $user->telp?></li>
                   <li><i class="icofont-rounded-right"></i> <strong>Alamat: </strong> <?= $user->alamat?></li>
-                  <li><i class="icofont-rounded-right"></i> <strong>Bidang Pekerjaan: </strong><?= $user->bidang_pekerjaan ?></li>
+                  <li><i class="icofont-rounded-right"></i> <strong>Bidang Pekerjaan: </strong><?php foreach($bidang_pekerjaan as $bp): if($bp->id==$user->bidang_pekerjaan){ echo $bp->nama;} endforeach; ?></li>
                 </ul>
               </div>
               <div class="col-lg-6">
@@ -128,7 +175,7 @@
                   <li><i class="icofont-rounded-right"></i> <strong>Tahun Lulus:</strong> <?= $user->tahun_lulus?></li>
                   <li><i class="icofont-rounded-right"></i> <strong>Angkatan:</strong> <?= $user->angkatan?></li>
                   <li><i class="icofont-rounded-right"></i> <strong>Mulai Kerja:</strong> <?= $user->mulai_kerja?></li>
-                  <li><i class="icofont-rounded-right"></i> <strong>Pekerjaan:</strong> <?= $user->pekerjaan==1 ? 'Bidang IT' : 'Lainnya' ?></li>
+                  <li><i class="icofont-rounded-right"></i> <strong>Konsentrasi Skripsi:</strong> <?php foreach($konsentrasi as $k): if($k->id==$user->konsentrasi){ echo $k->konsentrasi;} endforeach; ?> </li>
                 </ul>
               </div>
             </div>
@@ -189,8 +236,10 @@
         </div>
 
         <div class="row" data-aos="fade-in">
-          <div class="col-lg-12 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form action="<?= base_url('frontend/loker/tambah/'.$this->session->userdata('id')) ?>" method="post" role="form" class="php-email-form" enctype="multipart/form-data">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-body">
+              <form action="<?= base_url('frontend/loker/tambah/'.$this->session->userdata('id')) ?>" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="name">Judul Lowongan</label>
                     <input type="text" class="form-control" name="judul" id="judul" required />
@@ -207,14 +256,16 @@
                 </div>
                 <div class="form-group">
                     <label for="name">Deskripsi</label>
-                    <textarea class="form-control" name="deskripsi" id="deskripsi" rows="10" required></textarea>
+                    <textarea name="deskripsi" id="deskripsi" rows="10"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="name">Foto</label>
                     <input type="file" class="form-control" name="foto" required/>
                 </div>
-                <div class="text-center"><button type="submit">Simpan</button></div>
-            </form>
+                <div class="text-center"><button type="submit" class="btn btn-primary">Simpan</button></div>
+              </form>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -232,14 +283,18 @@
         </div>
 
         <div class="row">
-          <?php foreach($survey as $survey): ?>
+          <?php 
+            if(!empty($survey)){
+              foreach($survey as $survey): 
+          
+          ?>
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
             <div class="icon"><i class="icofont-tasks-alt"></i></div>
             <h4 class="title"><a><?= $survey->nama_survei ?></a></h4>
             <p class="description text-justify"><?= substr($survey->deskripsi,0,75) ?> ...</p>
             <a href="<?= base_url('detailSurvey/'.$survey->id) ?>" class="btn btn-primary btn-sm float-right">Mulai Survey  <i class="bx bx-right-arrow p-t-3"></i></a>
           </div>
-          <?php endforeach ?>
+              <?php endforeach; } ?>
         </div>
 
       </div>
@@ -276,7 +331,7 @@
                     <div class="sent-message">Your message has been sent. Thank you!</div>
                 </div>
                 <div class="text-center">
-                  <a class="btn btn-secondary btn-sm float-left" id="showpassword"><i class="bx bx-show-alt"></i> lihat password</a>
+                  <a class="btn btn-secondary btn-sm float-left text-white" id="showpassword"><i class="bx bx-show-alt"></i> lihat password</a>
                   <input class="btn btn-info btn-sm float-right" name="submit" type="submit" value="simpan">
                 </div>
             </form>

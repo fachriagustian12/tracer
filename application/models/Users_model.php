@@ -67,26 +67,6 @@ class Users_model extends CI_Model {
     public function update($id,$new_foto)
     {
         if ($this->session->userdata('id_user_grup')==3) {
-            $pekerjaan='';
-            if ($this->input->post('pekerjaan')!=="") {
-                $pekerjaan =$this->input->post('pekerjaan');
-            }else{
-                $pekerjaan = $this->input->post('old_pekerjaan');
-            }
-            $bidang='';
-            if ($this->input->post('pekerjaan')==1) {
-                if ($this->input->post('bidang_pekerjaan')!=="") {
-                    $bidang=$this->input->post('bidang_pekerjaan');
-                }else{
-                    $bidang=$this->input->post('old_bidang_pekerjaan');
-                }
-            }else{
-                if ($this->input->post('bidang_pekerjaan2')!=="") {
-                    $bidang=$this->input->post('bidang_pekerjaan2');
-                }else{
-                    $bidang=$this->input->post('old_bidang_pekerjaan2');
-                }
-            }
             $data=array(
                 'nama_depan'=>$this->input->post('nama_depan'),
                 'nama_belakang'=>$this->input->post('nama_belakang'),
@@ -99,9 +79,8 @@ class Users_model extends CI_Model {
                 'tahun_lulus'=>$this->input->post('tahun_lulus'),
                 'mulai_kerja'=>$this->input->post('mulai_kerja'),
                 'angkatan'=>$this->input->post('angkatan'),
-                'pekerjaan'=>$pekerjaan,
-                'bidang_pekerjaan'=>$bidang,
-                'jabatan'=>$this->input->post('jabatan'),
+                'konsentrasi'=>$this->input->post('konsentrasi'),
+                'bidang_pekerjaan'=>$this->input->post('bidang_pekerjaan'),
                 'alamat_kerja'=>$this->input->post('alamat_kerja'),
                 'kota'=>$this->input->post('kota'),
                 'foto'=>$new_foto
@@ -163,13 +142,6 @@ class Users_model extends CI_Model {
 
     public function daftar($foto)
     {
-        $bidang='';
-        if ($this->input->post('bidang_pekerjaan2')!=="") {
-            $bidang=$this->input->post('bidang_pekerjaan2');
-        }else{
-            $bidang=$this->input->post('bidang_pekerjaan');
-        }
-
         $data=array(
             'id_user_grup'=>3,
             'nama_depan'=>$this->input->post('nama_depan'),
@@ -185,8 +157,7 @@ class Users_model extends CI_Model {
             'mulai_kerja'=>$this->input->post('mulai_kerja'),
             'angkatan'=>$this->input->post('angkatan'),
             'pekerjaan'=>$this->input->post('pekerjaan'),
-            'bidang_pekerjaan'=>$bidang,
-            'jabatan'=>$this->input->post('jabatan'),
+            'bidang_pekerjaan'=>$this->input->post('bidang_pekerjaan'),
             'alamat_kerja'=>$this->input->post('alamat_kerja'),
             'kota'=>$this->input->post('kota'),
             'foto'=>$foto,

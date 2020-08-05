@@ -24,6 +24,7 @@
   <link rel="stylesheet" href="<?= base_url('assets/backend/') ?>plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="<?= base_url('assets/backend/') ?>plugins/summernote/summernote-bs4.css">
+  <link rel="stylesheet" href="<?= base_url('assets/backend/') ?>dist/css/style.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />

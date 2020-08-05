@@ -27,11 +27,13 @@ class Users extends CI_Controller {
     }
 	public function user($level)
 	{
-		$this->load->model('pekerjaan_model');
+		$this->load->model('konsentrasi_model');
+		$this->load->model('bidang_pekerjaan_model');
 		$data['title'] = $level;
         $data['user'] = $this->users_model->getLevel($level)->result();
         $data['user2'] = $this->users_model->getLevel($level)->result();
-        $data['pekerjaan'] = $this->pekerjaan_model->getAll($level)->result();
+        $data['konsentrasi'] = $this->konsentrasi_model->getAll()->result();
+        $data['bidang_pekerjaan'] = $this->bidang_pekerjaan_model->getAll()->result();
 		$this->load->view('backend/include/head');
 		$this->load->view('backend/include/navbar');
 		$this->load->view('backend/include/sider');
@@ -188,17 +190,23 @@ class Users extends CI_Controller {
     {
         $this->load->model('loker_model');
         $this->load->model('survey_model');
+        $this->load->model('konsentrasi_model');
+		$this->load->model('bidang_pekerjaan_model');
         $data['user'] = $this->users_model->getById($this->session->userdata('id'))->row();
         $data['loker']=$this->loker_model->getAll()->result();
         $data['survey']=$this->survey_model->getAll()->result();
+        $data['konsentrasi'] = $this->konsentrasi_model->getAll()->result();
+        $data['bidang_pekerjaan'] = $this->bidang_pekerjaan_model->getAll()->result();
         $this->load->view('frontend/alumni/index',$data);
     }
 
     public function editProfil($id)
     {
-		$this->load->model('pekerjaan_model');
+        $this->load->model('konsentrasi_model');
+		$this->load->model('bidang_pekerjaan_model');
         $data['user'] = $this->users_model->getById($id)->row();
-        $data['pekerjaan'] = $this->pekerjaan_model->getAll()->result();
+        $data['konsentrasi'] = $this->konsentrasi_model->getAll()->result();
+        $data['bidang_pekerjaan'] = $this->bidang_pekerjaan_model->getAll()->result();
         $this->load->view('frontend/alumni/editProfil',$data);
     }
 }

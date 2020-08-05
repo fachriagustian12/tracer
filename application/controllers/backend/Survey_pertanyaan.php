@@ -56,30 +56,32 @@ class Survey_pertanyaan extends CI_Controller {
         }
 	}
 
-	public function update($id)
+	public function update($id,$idSurvey)
 	{
         $data=$this->survey_pertanyaan_model->edit($id);
 		if($data==true){
             $this->session->set_flashdata('kondisi','1');
 			$this->session->set_flashdata('status','Data berhasil ditambahkan !');
-			redirect('backend/survey/detail/'.$id);
+			redirect('backend/survey/detail/'.$idSurvey);
 		}else {
             $this->session->set_flashdata('kondisi','0');
 			$this->session->set_flashdata('status','Data gagal ditambahkan !');
-			redirect('backend/survey/detail/'.$id);
+			redirect('backend/survey/detail/'.$idSurvey);
         }
 	}
 
-	public function delete($id){
+	public function delete($id,$idSurvey){
         $data=$this->survey_pertanyaan_model->delete($id);
         if($data==true){
+			$this->load->model('survey_jawaban_model');
+			$this->survey_jawaban_model->deleteFromPertanyaan($id);
             $this->session->set_flashdata('kondisi','1');
 			$this->session->set_flashdata('status','delete berhasil !');
-			redirect('backend/survey/detail/'.$id);
+			redirect('backend/survey/detail/'.$idSurvey);
 		}else {
             $this->session->set_flashdata('kondisi','0');
 			$this->session->set_flashdata('status','delete gagal !');
-			redirect('backend/survey/detail/'.$id);
+			redirect('backend/survey/detail/'.$idSurvey);
         }
     }
 }

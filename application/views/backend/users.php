@@ -54,9 +54,11 @@
                             <th style="width: 10px">#</th>
                             <th>Nama</th>
                             <th>L / P</th>
-                            <th>Alamat</th>
                             <th><?php if($title=="2"){ echo "Telepon"; }else{ echo "Tahun Lulus"; }?></th>
-                            <th>Pekerjaan</th>
+                            <?php if($title=="3"){ ?>
+                            <th>Konsentrasi</th>
+                            <th>Bidang Pekerjaan</th>
+                            <?php } ?>
                             <th>Status</th>
                             <th>Aksi</th>
                         </tr>
@@ -67,9 +69,27 @@
                               <td><?= $no ?></td>
                               <td><?= ucfirst($user->nama_depan)." ".ucfirst($user->nama_belakang) ?></td>
                               <td><?= $user->jenis_kelamin ?></td>
-                              <td><?= $user->alamat ?></td>
-                            <td><?php if($title=="2"){ ?> <?= $user->telp ?> <?php }else{ echo $user->tahun_lulus; } ?></td>
-                              <td><?php if($user->pekerjaan == 1){ echo "Bidang IT"; }else{ echo "Lainnya"; } ?></td>
+                              <td><?php if($title=="2"){ ?> <?= $user->telp ?> <?php }else{ echo $user->tahun_lulus; } ?></td>
+                              <?php if($title=="3"){ ?>
+                              <td>
+                                <?php 
+                                  foreach($konsentrasi as $k): 
+                                    if($k->id == $user->konsentrasi){
+                                      echo $k->konsentrasi;
+                                    }      
+                                  endforeach;
+                                ?>
+                              </td>
+                              <td>
+                                <?php 
+                                  foreach($bidang_pekerjaan as $bp): 
+                                    if($bp->id == $user->bidang_pekerjaan){
+                                      echo $bp->nama;
+                                    }      
+                                  endforeach;
+                                ?>
+                              </td>
+                                <?php } ?>
                               <td>
                                 <?php if($user->status == "nonaktif"){ ?>
                                 <span class="badge badge-danger"><?= strtoupper($user->status) ?></span>
@@ -203,14 +223,30 @@ foreach ($user2 as $user) {
                 <td><strong>Angkatan :</strong></td>
                 <td><?= $user->angkatan ?></td>
                 </tr>
-                <td><strong>Pekerjaan :</strong></td>
-                <td><?php foreach($pekerjaan as $p): if($p->id==$user->pekerjaan): echo $p->pekerjaan; endif; endforeach ?></td>
+                <td><strong>Konsentrasi Skripsi :</strong></td>
+                <td>
+                  <?php 
+                    foreach($konsentrasi as $k): 
+                      if($k->id == $user->konsentrasi){
+                        echo $k->konsentrasi;
+                      }      
+                    endforeach;
+                  ?>
+                </td>
                 </tr>
                 <td><strong>Kota :</strong></td>
                 <td><?= $user->kota ?></td>
                 </tr>
                 <td><strong>Bidang Pekerjaan :</strong></td>
-                <td><?= $user->bidang_pekerjaan ?></td>
+                <td>
+                  <?php 
+                    foreach($bidang_pekerjaan as $bp): 
+                      if($bp->id == $user->bidang_pekerjaan){
+                        echo $bp->nama;
+                      }      
+                    endforeach;
+                  ?>
+                </td>
                 </tr>
               </table>
               

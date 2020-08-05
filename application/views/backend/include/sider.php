@@ -68,6 +68,12 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a href="<?= base_url('backend/hasilKmeans') ?>" class="nav-link">
+                    <i class="nav-icon fas fa-list"></i>
+                    <p>Hasil K-means</p>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="<?= base_url('backend/users/ubahpassword')?>" class="nav-link">
                 <i class="nav-icon fas fa-cogs"></i>
                 <p>

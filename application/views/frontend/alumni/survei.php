@@ -28,7 +28,7 @@
   <!-- Template Main CSS File -->
   <link href="<?= base_url('assets/frontend/alumni')?>/css/style.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
-
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <!-- =======================================================
   * Template Name: iPortfolio - v1.3.0
   * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
@@ -38,7 +38,17 @@
 </head>
 
 <body>
-
+<?php 
+    if($this->session->flashdata('hasilSurvey')){
+  ?>
+    <script>
+      swal("Bagus !", "<?= $this->session->flashdata('hasilSurvey') ?>", "success", {
+        button: "OK",
+      });
+    </script>
+  <?php
+    }
+  ?>
   <!-- ======= Mobile nav toggle button ======= -->
   <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
 
@@ -54,7 +64,7 @@
 
       <nav class="nav-menu">
         <ul>
-          <li class="active"><a href="<?= base_url('alumni') ?>" id="home"><i class="bx bx-home"></i> <span>Home</span></a></li>
+          <li><a href="<?= base_url('alumni') ?>" id="home"><i class="bx bx-home"></i> <span>Back To Home</span></a></li>
           <li><a href="<?= base_url('login/logout') ?>"><i class="bx bx-exit"></i> Log out</a></li>
         </ul>
       </nav><!-- .nav-menu -->
@@ -71,19 +81,6 @@
           <h2>Survey</h2>
         </div>
 
-        <?php 
-          if ($this->session->flashdata('hasilSurvey')) {
-        ?>
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-          <?= $this->session->flashdata('hasilSurvey') ?>
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <?php
-          }
-        ?>
-
         <div class="row" data-aos="fade-in" style="font-size:11px;">
             <div class="col-lg-12 d-flex align-items-stretch">
                 <div class="info">
@@ -95,6 +92,10 @@
                       if ($cekJawabanUser > 0) {
                     ?>
                       <span class="float-right"><a class="btn btn-secondary btn-sm disabled">Anda Sudah Mengerjakan Survey ini <span class="anu bx bx-wink-smile pt-1"></span></a></span>
+                    <?php
+                      }else if($cekPertanyaan == 0){
+                    ?>
+                      <span class="float-right"><a class="btn btn-secondary btn-sm disabled">Survey Belum tersedia</a></span>
                     <?php
                       }else{
                     ?>

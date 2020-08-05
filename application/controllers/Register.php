@@ -20,11 +20,13 @@ class Register extends CI_Controller {
 	 */
 	public function __construct(){
         parent :: __construct();
-        $this->load->model('pekerjaan_model');
     }
 	public function daftar()
 	{
-		$data['pekerjaan']=$this->pekerjaan_model->getAll()->result();
+		$this->load->model('konsentrasi_model');
+		$this->load->model('bidang_pekerjaan_model');
+		$data['konsentrasi']=$this->konsentrasi_model->getAll()->result();
+		$data['bidang_pekerjaan']=$this->bidang_pekerjaan_model->getAll()->result();
 		$this->load->view('frontend/register',$data);
 	}
 	public function aksidaftar()
@@ -32,7 +34,7 @@ class Register extends CI_Controller {
 		$config['upload_path']          = './assets/user/';
         $config['allowed_types']        = 'gif|jpg|png|jpeg';
         $config['overwrite']			= true;
-        $config['max_size']             = 4096; // 1MB
+        $config['max_size']             = 4096;
         $config['max_width']            = 4028;
         $config['max_height']           = 4028;
 
@@ -53,11 +55,4 @@ class Register extends CI_Controller {
 			}
         }
 	}
-	public function get_sub_pekerjaan()
-	{
-		$id = $this->input->post('id');
-		$data=$this->pekerjaan_model->get_sub_pekerjaan($id)->result();
-		echo json_encode($data);
-	}
-
 }

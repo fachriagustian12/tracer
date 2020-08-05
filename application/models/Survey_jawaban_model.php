@@ -61,4 +61,14 @@ class Survey_jawaban_model extends CI_Model {
             return FALSE;
         }
     }
+    public function deleteFromPertanyaan($id)
+    {
+        $this->db->where('id_pertanyaan',$id);
+        $query = $this->db->delete('survei_jawaban');
+        if ($query) {
+            return TRUE;
+        }else{
+            return FALSE;
+        }
+    }
 }

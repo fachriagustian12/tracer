@@ -54,7 +54,7 @@
 
       <nav class="nav-menu">
         <ul>
-          <li class="active"><a href="<?= base_url('alumni') ?>" id="home"><i class="bx bx-home"></i> <span>Home</span></a></li>
+          <li><a href="<?= base_url('alumni') ?>" id="home"><i class="bx bx-home"></i> <span>Back To Home</span></a></li>
           <li><a href="<?= base_url('login/logout') ?>"><i class="bx bx-exit"></i> Log out</a></li>
         </ul>
       </nav><!-- .nav-menu -->

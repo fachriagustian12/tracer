@@ -46,7 +46,7 @@
               <div class="icon ">
                 <i class="fa fa-users "></i>
               </div>
-              <a href="#" class="small-box-footer">Kelola Alumni <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="<?= base_url('backend/users/user/3') ?>" class="small-box-footer">Kelola Alumni <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -61,7 +61,7 @@
               <div class="icon">
                 <i class="fa fa-edit"></i>
               </div>
-              <a href="#" class="small-box-footer">Kelola Survey <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="<?= base_url('backend/survey') ?>" class="small-box-footer">Kelola Survey <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->

@@ -88,25 +88,24 @@
                             <div class="form-group">
                                 <label for="pekerjaan"><i class="zmdi zmdi-account-box-mail"></i></label>
                                 <select name="pekerjaan" id="pekerjaan" required>
-                                    <option selected>Pilih Pekerjaan</option>
-                                    <?php foreach($pekerjaan as $pekerjaan): ?>
-                                    <option value="<?= $pekerjaan->id ?>"><?= $pekerjaan->pekerjaan ?></option>
+                                    <option selected>Pilih Konsentrasi Skripsi Anda</option>
+                                    <?php foreach($konsentrasi as $konsentrasi): ?>
+                                    <option value="<?= $konsentrasi->id ?>"><?= $konsentrasi->konsentrasi ?></option>
                                     <?php endforeach ?> 
                                 </select>
                             </div>
-                            <div class="form-group d-none" id="bidang2">
+                            <!-- <div class="form-group d-none" id="bidang2">
                                 <label for="sub_pekerjaan"><i class="zmdi zmdi-account-box-mail"></i></label>
                                 <input type="text" name="bidang_pekerjaan2" id="bidang_pekerjaan2" placeholder="Masukan bidang pekerjaan">
-                            </div>
-                            <div class="form-group d-none" id="bidang1">
+                            </div> -->
+                            <div class="form-group" id="bidang1">
                                 <label for="pekerjaan"><i class="zmdi zmdi-account-box-mail"></i></label>
                                 <select name="bidang_pekerjaan" id="bidang_pekerjaan"> 
-                                    <option>Pilih</option>
+                                    <option selected>Pilih Bidang Pekerjaan</option>
+                                    <?php foreach($bidang_pekerjaan as $bp): ?>
+                                    <option class="pr-2" value="<?= $bp->id ?>"><?= $bp->nama ?></option>
+                                    <?php endforeach ?>
                                 </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="jabatan"><i class="zmdi zmdi-account-box-mail"></i></label>
-                                <input type="text" name="jabatan" id="name" placeholder="Jabatan" required/>
                             </div>
                             <div class="form-group">
                                 <label for="Alamat"><i class="zmdi zmdi-pin"></i></label>
@@ -163,7 +162,7 @@
             });
         });
     </script>
-    <script>
+    <!-- <script>
         $(document).ready(function(){
             $('#pekerjaan').change(function(){
                 var id=$(this).val();
@@ -191,6 +190,6 @@
                 }
             });
         });
-    </script>
+    </script> -->
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>

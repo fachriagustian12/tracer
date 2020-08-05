@@ -107,7 +107,7 @@
                               <td class="text-center">
                                 <a href="<?= base_url('backend/survey_pertanyaan/detail/'.$title.'/'.$survey->id) ?>" class="btn btn-warning btn-sm"><i class="fa fa-eye"></i></a>
                                 <a class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal_edit<?= $survey->id ?>"><i class="fa fa-edit"></i></a>
-                                <a href="<?= base_url('backend/survey_pertanyaan/delete/'.$survey->id) ?>" class="btn btn-danger btn-sm" onclick="return confirm('anda yakin ingini menghapus data tersebut ?')"><i class="fa fa-trash"></i></a>
+                                <a href="<?= base_url('backend/survey_pertanyaan/delete/'.$survey->id.'/'.$survey->id_survei) ?>" class="btn btn-danger btn-sm" onclick="return confirm('anda yakin ingini menghapus data tersebut ?')"><i class="fa fa-trash"></i></a>
                               </td>
 
                             </tr>
@@ -135,7 +135,7 @@
               </button>
             </div>
             <div class="modal-body">
-            <form action="<?=base_url('backend/survey_pertanyaan/update/'.$survey->id)?>" method="post" enctype="multipart/form-data">
+            <form action="<?=base_url('backend/survey_pertanyaan/update/'.$survey->id.'/'.$survey->id_survei)?>" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="pertanyaan" class="form-control-label">Pertanyaan</label>
                         <input type="text" class="form-control" name="pertanyaan" value="<?= $survey->pertanyaan ?>">
