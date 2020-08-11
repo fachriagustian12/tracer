@@ -139,7 +139,7 @@
                     <div class="card kmeans mt-4">
                         <table class="table">
                             <thead class="thead-dark">
-                                <th colspan="3" class="text-center">Centroid Awal</th>
+                                <th colspan="3" class="text-center">Centroid Awal <?php if($i>0){ echo 'Baru'; } ?> </th>
                             </thead>
                             <tr>
                                 <td>C1</td>
@@ -196,7 +196,7 @@
                                 url: "<?= base_url('backend/HasilKmeans/edit/1') ?>",
                                 data: {j1:j1, j2:j2},
                                 success: function(data) {
-                                    alert('Sukses Menghitung k-means !');
+                                    alert(' Cluster tidak berubah ! Sukses Menghitung k-means !');
                                     $('html').animate({scrollTop : $(document).height()},2600);
                                 }
                             });
