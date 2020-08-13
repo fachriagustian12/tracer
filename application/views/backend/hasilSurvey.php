@@ -51,7 +51,7 @@
                                         <?php 
                                             $pertanyaan = array();
                                             $jmlhJawaban = array();
-                                            $warnaAll = array('#4addac', '#00a65a','#FC4A1A','#F7B733','#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de','#FFFF00','#FFD700');
+                                            $warnaAll = array('#4addac', '#00a65a','#FC4A1A','#F7B733','#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de','#FFFF00','#FFD700','#FF69B4','#4B0082','#B0C4DE','#00FF00','#9370DB','#191970','#000080','#FF4500','#B0E0E6','#8B4513');
                                             foreach($surveyJawaban as $sj):
                                             $jawaban = 0;
                                                 if($sj->id_pertanyaan == $sp->id && $sj->id_survey == $survey->id){
