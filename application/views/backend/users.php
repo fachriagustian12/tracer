@@ -99,6 +99,7 @@
                               </td>
                               <td>
                                 <?php 
+                                if($this->session->userdata('id_user_grup')==2){
                                 if ($user->status=="nonaktif") {
                                 ?>
                                 <a href="<?= base_url('backend/users/editstatus/'.$user->id.'/aktif/'.$title); ?> " class="btn btn-success btn-sm font-weight-bold"><i class="fa fa-check"></i> AKTIFKAN</a>
@@ -108,7 +109,7 @@
                                   ?>
                                   <a href="<?= base_url('backend/users/editstatus/'.$user->id.'/nonaktif/'.$title); ?> " class="btn btn-danger btn-sm font-weight-bold"><i class="fa fa-times"></i> NONAKTIFKAN</a>
                                   <?php
-                                }
+                                }}
                                 ?>
                                 <a class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal_view<?= $user->id ?>"><i class="fa fa-eye"></i></a>
                                 <?php if($title=="2"){ ?>

@@ -12,6 +12,7 @@
         <li class="nav-item">
             <a href="<?= base_url('login/logout') ?>" class="nav-link">
                 <i class="fas fa-sign-out-alt"></i>
+                <span class="font-weight-bold"> LogOut</span>
             </a>
         </li>
     </ul>
