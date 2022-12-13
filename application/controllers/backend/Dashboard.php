@@ -38,6 +38,10 @@ class Dashboard extends CI_Controller {
         $data['users'] = $this->users_model->getLevel(3)->result();
 		$data['survey'] = $this->survey_model->getAll()->num_rows();
 		$data['kmeans'] = $this->HasilKmeans_model->getAll()->row();
+		$data['jkld'] = $this->users_model->getBy(['jenis_kelamin' => 'L', 'id_user_grup' => 2])->num_rows();
+		$data['jkpd'] = $this->users_model->getBy(['jenis_kelamin' => 'P', 'id_user_grup' => 2])->num_rows();
+		$data['jkl'] = $this->users_model->getBy(['jenis_kelamin' => 'L', 'id_user_grup' => 3])->num_rows();
+		$data['jkp'] = $this->users_model->getBy(['jenis_kelamin' => 'P', 'id_user_grup' => 3])->num_rows();
 		$this->load->view('backend/include/head');
 		$this->load->view('backend/include/navbar');
 		$this->load->view('backend/include/sider');

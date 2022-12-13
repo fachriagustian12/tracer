@@ -1,20 +1,20 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0 text-dark"></h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="<?= base_url('admin') ?>">Home</a></li>
-              <li class="breadcrumb-item"><a href="<?= base_url('backend/survey') ?>">Survey </a></li>
-              <li class="breadcrumb-item active">Detail Survey</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark"></h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="<?= base_url('admin') ?>">Home</a></li>
+                        <li class="breadcrumb-item"><a href="<?= base_url('backend/survey') ?>">Survey </a></li>
+                        <li class="breadcrumb-item active">Detail Survey</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
 
@@ -42,11 +42,13 @@
                                 <div class="col-md-6">
                                     <div class="card card-secondary">
                                         <div class="card-header">
-                                            <h3 class="card-title"> <span class="font-weight-bold">PERTANYAAN : </span> <?= $sp->pertanyaan ?></h3>
-                                            
+                                            <h3 class="card-title"> <span class="font-weight-bold">PERTANYAAN : </span>
+                                                <?= $sp->pertanyaan ?></h3>
+
                                         </div>
                                         <div class="card-body">
-                                            <canvas id="pieChart<?= $sp->id ?>" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                                            <canvas id="pieChart<?= $sp->id ?>"
+                                                style="min-height: 350px; height: 650px; max-height: 650px; max-width: 100%;"></canvas>
                                         </div>
                                         <?php 
                                             $pertanyaan = array();
@@ -74,38 +76,39 @@
                                             
                                         ?>
                                         <!-- /.card-body -->
-                                        <script src="<?= base_url('assets/backend/') ?>plugins/jquery/jquery.min.js"></script>
+                                        <script src="<?= base_url('assets/backend/') ?>plugins/jquery/jquery.min.js">
+                                        </script>
 
-                                        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>
+                                        <script
+                                            src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js">
+                                        </script>
 
                                         <script>
-                                            $(function(){
-                                                var pieChart ='#pieChart<?= $sp->id ?>';
-                                                var pieChartCanvas = $(pieChart).get(0).getContext('2d');
-                                                var donutData        = {
-                                                labels: [<?= join($pertanyaan,',') ?>],
-                                                datasets: [
-                                                    {
-                                                    data: [<?= join($jmlhJawaban,',') ?>],
-                                                    backgroundColor : [<?= join($pilihWarna,',') ?>],
-                                                    }
-                                                ]
-                                                }
-                                                var pieData        = donutData;
-                                                var pieOptions     = {
-                                                maintainAspectRatio : false,
-                                                responsive : true,
-                                                }
-                                                //Create pie or douhnut chart
-                                                // You can switch between pie and douhnut using the method below.
-                                                var pieChart = new Chart(pieChartCanvas, {
+                                        $(function() {
+                                            var pieChart = '#pieChart<?= $sp->id ?>';
+                                            var pieChartCanvas = $(pieChart).get(0).getContext('2d');
+                                            var donutData = {
+                                                labels: [<?= implode(",", $pertanyaan) ?>],
+                                                datasets: [{
+                                                    data: [<?= implode(",", $jmlhJawaban) ?>],
+                                                    backgroundColor: [
+                                                        <?= implode(",", $pilihWarna) ?>
+                                                    ],
+                                                }]
+                                            }
+                                            var pieData = donutData;
+                                            var pieOptions = {
+                                                maintainAspectRatio: false,
+                                                responsive: true,
+                                            }
+                                            //Create pie or douhnut chart
+                                            // You can switch between pie and douhnut using the method below.
+                                            var pieChart = new Chart(pieChartCanvas, {
                                                 type: 'pie',
                                                 data: pieData,
-                                                options: pieOptions      
-                                                });
+                                                options: pieOptions
                                             });
-
-                                            
+                                        });
                                         </script>
                                         <?php
                                             $p = sizeof($jmlhJawaban); 
@@ -115,7 +118,8 @@
                                             }
 
                                         ?>
-                                        <h5 class="p-3">Jumlah Responden : <span class="font-weight-bold"> <?= $jmlh ?> </span> Responden </h5>
+                                        <h5 class="p-3">Jumlah Responden : <span class="font-weight-bold"> <?= $jmlh ?>
+                                            </span> Responden </h5>
                                     </div>
                                 </div>
                                 <?php } endforeach ?>

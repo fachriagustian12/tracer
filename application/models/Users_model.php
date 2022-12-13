@@ -24,6 +24,12 @@ class Users_model extends CI_Model {
         return $this->db->get('user');
     }
 
+    public function getBy($where)
+    {
+        $this->db->where($where);
+        return $this->db->get('user');
+    }
+
     public function getAll()
     {
         return $this->db->get('user');
